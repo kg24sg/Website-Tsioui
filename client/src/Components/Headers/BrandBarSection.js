@@ -3,9 +3,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Row from 'react-bootstrap/Row';
+// import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Sling as Hamburger } from 'hamburger-react';
+// import { Sling as Hamburger } from 'hamburger-react';
 import {
   BsSearch,
   BsFillCartFill,
@@ -15,11 +15,11 @@ import {
 } from 'react-icons/bs';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+// import Tab from 'react-bootstrap/Tab';
+// import Tabs from 'react-bootstrap/Tabs';
 import RegisterModal from '../LoginRegister/RegisterModal';
 import LogInModal from '../LoginRegister/LogInModal';
-import { Link } from '@mui/material';
+// import { Link } from '@mui/material';
 
 export default function BrandBarSection(props) {
   const [show, setShow] = useState(false);
@@ -36,7 +36,7 @@ export default function BrandBarSection(props) {
     setshowRegister(true);
     setshowLogIn(false);
   };
-  const [key, setKey] = useState('home');
+  //   const [key, setKey] = useState('home');
 
   return (
     <>
@@ -56,7 +56,7 @@ export default function BrandBarSection(props) {
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col> */}
-          <Col xs={1}>
+          <Col>
             <div class="d-flex justify-content-start">
               <Nav.Item>
                 <Nav.Link class="header_link" href="/home">
@@ -65,7 +65,7 @@ export default function BrandBarSection(props) {
               </Nav.Item>
             </div>
           </Col>
-          <Col xs={1}>
+          <Col>
             <div class="d-flex justify-content-start">
               <Nav.Item>
                 <Nav.Link class="header_link" href="/home">
@@ -75,7 +75,7 @@ export default function BrandBarSection(props) {
             </div>
           </Col>
 
-          <Col xs={7}>
+          <Col md={6}>
             <div class="d-flex justify-content-center">
               <Navbar.Brand href="#home">
                 <img
@@ -89,8 +89,8 @@ export default function BrandBarSection(props) {
               </Navbar.Brand>
             </div>
           </Col>
-          <Col xs={1}>
-            <div class="d-flex">
+          <Col>
+            <div class="d-flex  justify-content-start">
               <Nav.Item>
                 <Nav.Link class="header_link">
                   <BsPuzzle />
@@ -98,8 +98,8 @@ export default function BrandBarSection(props) {
               </Nav.Item>
             </div>
           </Col>
-          <Col xs={1}>
-            <div class="d-flex">
+          <Col>
+            <div class="d-flex  justify-content-start">
               <Nav.Item>
                 <Nav.Link class="header_link" href="/home">
                   <BsFillCartFill />
@@ -108,8 +108,8 @@ export default function BrandBarSection(props) {
             </div>
           </Col>
           {!props.isLogIn.isLogIn && (
-            <Col xs={1}>
-              <div class="d-flex ">
+            <Col>
+              <div class="d-flex  justify-content-start">
                 <Nav.Item>
                   <Nav.Link class="header_link" onClick={handleShow}>
                     <BsFillPersonFill />
@@ -119,13 +119,13 @@ export default function BrandBarSection(props) {
             </Col>
           )}
           {props.isLogIn.isLogIn && (
-            <Col xs={1}>
-              <div class="d-flex">
+            <Col>
+              <div class="d-flex  justify-content-start">
                 <Nav.Item>
                   <Nav.Link class="header_link">
                     <Dropdown>
                       <Dropdown.Toggle variant="dark">
-                        {props.isLogIn.nameOfUser} <BsFillPersonFill />
+                        {props.isLogIn.fullname} <BsFillPersonFill />
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item href="#">Sign Out</Dropdown.Item>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Headers/Header';
+import Shop from './Components/Shop/Shop';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -12,11 +13,12 @@ function App() {
     sessionTime: 0,
   });
 
-  const isLogInhandle = (isLogin, nameOfUser, sessionTime) => {
+  const isLogInhandle = (isLogin, nameOfUser, sessionTime, fullname) => {
     setIsLogIn({
       isLogIn: isLogin,
       nameOfUser: nameOfUser,
       sessionTime: sessionTime,
+      fullname: fullname,
     });
   };
 
@@ -44,16 +46,12 @@ function App() {
         setsessionTime={setsessionTime}
         isLogIn={isLogIn}
       />
-      {/* <BrowserRouter>
-      <Routes>
-     
-          <Route index element={<></>} />
-          <Route path="blogs" element={<></>} />
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="*" element={<></>} />
-        
-      </Routes>
-    </BrowserRouter> */}
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/shop" element={<Shop />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
