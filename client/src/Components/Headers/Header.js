@@ -13,7 +13,7 @@ export default function Header(props) {
         setnameOfUser={props.setIsLogIn}
         setsessionTime={props.setsessionTime}
         isLogIn={props.isLogIn}
-        usersName={props.} />
+      />
       <NavBarSection />
 
       <Footer />
