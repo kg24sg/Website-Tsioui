@@ -11,7 +11,7 @@ const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const upload = multer();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const path = require('path');
 const app = express();
 
