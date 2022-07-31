@@ -64,6 +64,10 @@ app.get('/api', (req, res) => {
   res.json({ message: 'Something new is coming!!!!' });
 });
 
+app.get('/', async (req, res) => {
+  res.send('HELLO');
+});
+
 app.post('/register', (req, res) => {
   const newUser = new User({
     username: req.body.userName,
