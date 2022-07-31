@@ -16,7 +16,6 @@ const path = require('path');
 const app = express();
 
 // app.use(express.static(path.join(__dirname + 'public')));
-app.use(cors());
 app.use(express.static('client'));
 app.use(
   session({
@@ -137,6 +136,10 @@ app.post('/signIn', function (req, res) {
     }
   });
 });
+
+if (process.env.NODE_ENV == 'production') {
+  app.use(express.static('client/build'));
+}
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
