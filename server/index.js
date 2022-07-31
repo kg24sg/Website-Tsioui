@@ -15,8 +15,8 @@ const PORT = process.env.PORT || 3001;
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname + 'public')));
-
+// app.use(express.static(path.join(__dirname + 'public')));
+app.use(express.static('./client'));
 app.use(
   session({
     secret: 'dont mess with tsiouis website',
