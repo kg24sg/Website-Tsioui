@@ -90,7 +90,7 @@ export default function BrandBarSection(props) {
             </div>
           </Col>
           <Col>
-            <div class="d-flex  justify-content-start">
+            <div class="d-flex  justify-content-end">
               <Nav.Item>
                 <Nav.Link class="header_link">
                   <BsPuzzle />
@@ -99,7 +99,7 @@ export default function BrandBarSection(props) {
             </div>
           </Col>
           <Col>
-            <div class="d-flex  justify-content-start">
+            <div class="d-flex  justify-content-end">
               <Nav.Item>
                 <Nav.Link class="header_link" href="/home">
                   <BsFillCartFill />
@@ -109,7 +109,7 @@ export default function BrandBarSection(props) {
           </Col>
           {!props.isLogIn.isLogIn && (
             <Col>
-              <div class="d-flex  justify-content-start">
+              <div class="d-flex  justify-content-end">
                 <Nav.Item>
                   <Nav.Link class="header_link" onClick={handleShow}>
                     <BsFillPersonFill />
@@ -120,7 +120,7 @@ export default function BrandBarSection(props) {
           )}
           {props.isLogIn.isLogIn && (
             <Col>
-              <div class="d-flex  justify-content-start">
+              <div class="d-flex  justify-content-end">
                 <Nav.Item>
                   <Nav.Link class="header_link">
                     <Dropdown>
