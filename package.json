@@ -31,6 +31,8 @@
     "react-bootstrap": "^2.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/node": "^7.18.10",
     "concurrently": "^7.3.0"
   }
 }
