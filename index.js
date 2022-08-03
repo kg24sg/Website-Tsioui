@@ -16,7 +16,7 @@ const path = require('path');
 const app = express();
 
 // app.use(express.static(path.join(__dirname + 'public')));
-app.use(express.static('client'));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(
   session({
     secret: 'dont mess with tsiouis website',
@@ -62,10 +62,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get('/api', (req, res) => {
   res.json({ message: 'Something new is coming!!!!' });
-});
-
-app.get('/', async (req, res) => {
-  res.send('HELLO');
 });
 
 app.post('/register', (req, res) => {
