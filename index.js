@@ -16,7 +16,7 @@ const path = require('path');
 const app = express();
 
 // app.use(express.static(path.join(__dirname + 'public')));
-app.use(express.static(path.join(__dirname, './client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(
   session({
     secret: 'dont mess with tsiouis website',
