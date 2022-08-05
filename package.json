@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start:original": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "server": "nodemon",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
