@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 export default function NavBarSection() {
   return (
     <>
-      <Nav fill className="justify-content-center" activeKey="/home">
+      <Nav fill className="justify-content-center" activeKey="/">
         <Nav.Item>
           <Nav.Link href="/home">Active</Nav.Link>
         </Nav.Item>
