@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "start:original": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "server": "nodemon",
     "client": "npm start --prefix client",
