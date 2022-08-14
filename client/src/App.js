@@ -61,6 +61,7 @@ function App() {
             }
           />
           <Route path="/shop" element={<Shop />} />
+          <Redirect to="/home" />
         </Routes>
       </BrowserRouter>
     </div>
