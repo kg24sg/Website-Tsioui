@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 // import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import { Sling as Hamburger } from 'hamburger-react';
+import { Sling as Hamburger } from 'hamburger-react';
 import {
   BsSearch,
   BsFillCartFill,
@@ -42,41 +42,29 @@ export default function BrandBarSection(props) {
     <>
       <Navbar bg="dark" variant="dark" sticky="top">
         <Container fluid>
-          {/* <Col xs={1}>
-                    <Dropdown >
-                        <Dropdown.Toggle variant="dark">
-                            <Hamburger />
-                        </Dropdown.Toggle>
+          {
+            <Col xs={1}>
+              <Dropdown>
+                <Dropdown.Toggle variant="dark">
+                  <Hamburger />
+                </Dropdown.Toggle>
 
-                        <Dropdown.Menu class='humburger-menu' variant="dark">
-                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </Col> */}
-          <Col>
-            <div class="d-flex justify-content-start">
-              <Nav.Item>
-                <Nav.Link class="header_link" href="/home">
-                  <BsSearch />
-                </Nav.Link>
-              </Nav.Item>
-            </div>
-          </Col>
-          <Col>
-            <div class="d-flex justify-content-start">
-              <Nav.Item>
-                <Nav.Link class="header_link" href="/home">
-                  <BsBookmarkHeart />
-                </Nav.Link>
-              </Nav.Item>
-            </div>
-          </Col>
+                <Dropdown.Menu class="humburger-menu" variant="dark">
+                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">
+                    Another action
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="#/action-3">
+                    Something else
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+          }
 
           <Col md={6}>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-start">
               <Navbar.Brand href="#home">
                 <img
                   alt=""
@@ -90,18 +78,37 @@ export default function BrandBarSection(props) {
             </div>
           </Col>
           <Col>
-            <div class="d-flex  justify-content-end">
+            <div class="d-flex  justify-content-start">
               <Nav.Item>
-                <Nav.Link class="header_link">
+                <Nav.Link className="headerlink">
                   <BsPuzzle />
                 </Nav.Link>
               </Nav.Item>
             </div>
           </Col>
+
           <Col>
-            <div class="d-flex  justify-content-end">
+            <div class="d-flex justify-content-start">
               <Nav.Item>
-                <Nav.Link class="header_link" href="/home">
+                <Nav.Link className="headerlink" href="/home">
+                  <BsBookmarkHeart />
+                </Nav.Link>
+              </Nav.Item>
+            </div>
+          </Col>
+          <Col>
+            <div class="d-flex justify-content-start">
+              <Nav.Item>
+                <Nav.Link class="headerlink" href="/home">
+                  <BsSearch />
+                </Nav.Link>
+              </Nav.Item>
+            </div>
+          </Col>
+          <Col>
+            <div class="d-flex  justify-content-start">
+              <Nav.Item>
+                <Nav.Link className="headerlink" href="/home">
                   <BsFillCartFill />
                 </Nav.Link>
               </Nav.Item>
@@ -109,9 +116,9 @@ export default function BrandBarSection(props) {
           </Col>
           {!props.isLogIn.isLogIn && (
             <Col>
-              <div class="d-flex  justify-content-end">
+              <div class="d-flex  justify-content-start">
                 <Nav.Item>
-                  <Nav.Link class="header_link" onClick={handleShow}>
+                  <Nav.Link className="headerlink" onClick={handleShow}>
                     <BsFillPersonFill />
                   </Nav.Link>
                 </Nav.Item>
@@ -120,11 +127,11 @@ export default function BrandBarSection(props) {
           )}
           {props.isLogIn.isLogIn && (
             <Col>
-              <div class="d-flex  justify-content-end">
+              <div class="d-flex  justify-content-start">
                 <Nav.Item>
-                  <Nav.Link class="header_link">
+                  <Nav.Link>
                     <Dropdown>
-                      <Dropdown.Toggle variant="dark">
+                      <Dropdown.Toggle variant="dark" className="headerlink">
                         {props.isLogIn.fullname} <BsFillPersonFill />
                       </Dropdown.Toggle>
                       <Dropdown.Menu>

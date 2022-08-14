@@ -4,7 +4,7 @@
   text-align: center;
   background-color: #d2b1a6;
   width: 100vw;
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .dropdown-toggle::after {
@@ -31,15 +31,14 @@
   padding-right: 20% !important;
 }
 
-.nav .nav-item::before {
+/* .nav .nav-item::before {
   content: '';
   color: #542f34 !important;
   position: absolute;
   left: 0;
   bottom: 2px;
   width: 100%;
-  height: 3px;
-}
+} */
 
 /* .nav .nav-item:hover::before {
   bottom: 0;
@@ -56,22 +55,25 @@
   left: 0;
   bottom: 3px;
   width: 100%;
-  height: 3px;
+
   transition: all 0.3s ease-in-out;
 }
 
 .nav-link {
-  font-family: 'Bodoni Moda', serif;
-  font-size: 120%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 100%;
   color: white !important;
 }
 
-.nav-link:hover {
-  border-radius: 25px;
-  border: 5px solid #542f34;
-  padding: 5px;
+.navbarlink:hover {
+  border-radius: 1rem;
+  border: 0.25rem solid #542f34;
   border-top: 0px;
   transition: all 0.3s ease-in-out;
+}
+
+.headerlink:hover {
+  color: #d2b1a6 !important;
 }
 
 /* Shared */
@@ -89,6 +91,7 @@
   font-size: 16px;
   color: #fff;
   height: 100%;
+  font-family: 'Montserrat', sans-serif !important;
 }
 .loginBtn:before {
   content: '';
@@ -96,7 +99,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 34px;
+  width: 2rem;
+  color: #fff;
   height: 100%;
 }
 .loginBtn:focus {

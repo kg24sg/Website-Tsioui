@@ -86,25 +86,61 @@ export default function LogInForm(props) {
       true,
       googleData.profileObj.name,
       0,
-      googleData.profileObj.name
+      googleData.profileObj.givenName
     );
+    const registerData = {
+      userName: googleData.profileObj.givenName,
+      fullName: googleData.profileObj.name,
+      email: googleData.profileObj.email,
+      password: 'default',
+      emailInd: 0,
+      dateOfBirth: '',
+    };
+    axios.post('/register', registerData).then((response) => {
+      if (response.data.succes) {
+        console.log('hereeeee');
+      } else {
+        console.log(response.data.data.message);
+        console.log('hereeeee2');
+      }
+    });
     props.closeModal();
   };
 
   const responseFacebook = (response) => {
     console.log(response);
+    var split_name = response.name.split(' ');
+    console.log(split_name);
+    props.setIsLogIn(true, response.name, 0, split_name[0]);
+    const registerData = {
+      userName: split_name[0],
+      fullName: response.name,
+      email: response.email,
+      password: 'default',
+      emailInd: 0,
+      dateOfBirth: '',
+    };
+    axios.post('/register', registerData).then((response) => {
+      if (response.data.succes) {
+        console.log('hereeeee');
+      } else {
+        console.log(response.data.data.message);
+        console.log('hereeeee2');
+      }
+    });
+    props.closeModal();
   };
 
   return (
-    <div class="container">
+    <div>
       <h6 style={{ textAlign: 'center' }}>Sign in by Facebook or Google</h6>
       <br />
-      <div class="container">
+      <div class="container-md">
         <div class="row">
           <div class="col-6">
             <GoogleLogin
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-              buttonText="Login with Google"
+              buttonText="Google"
               onSuccess={handleLoginGoogle}
               onFailure={handleFailureGoogle}
               cookiePolicy={'single_host_origin'}
@@ -114,7 +150,8 @@ export default function LogInForm(props) {
           </div>
           <div class="col-6">
             <FacebookLogin
-              appId={process.env.REACT_APP_FACEBOOK_CLIENT_ID}
+              appId="1136058267289635"
+              textButton="Facebook"
               // autoLoad={true}
               fields="name,email,picture"
               callback={responseFacebook}
