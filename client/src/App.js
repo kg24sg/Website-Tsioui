@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Headers/Header';
 import Shop from './Components/Shop/Shop';
+import Home from './Components/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -40,15 +41,25 @@ function App() {
 
   return (
     <div>
-      <Header
-        setIsLogIn={isLogInhandle}
-        setnameOfUser={setnameOfUser}
-        setsessionTime={setsessionTime}
-        isLogIn={isLogIn}
-      />
-
       <BrowserRouter>
+        <Header
+          setIsLogIn={isLogInhandle}
+          setnameOfUser={setnameOfUser}
+          setsessionTime={setsessionTime}
+          isLogIn={isLogIn}
+        />
         <Routes>
+          <Route
+            path="/home"
+            element={
+              <Home
+                setIsLogIn={isLogInhandle}
+                setnameOfUser={setnameOfUser}
+                setsessionTime={setsessionTime}
+                isLogIn={isLogIn}
+              />
+            }
+          />
           <Route path="/shop" element={<Shop />} />
         </Routes>
       </BrowserRouter>

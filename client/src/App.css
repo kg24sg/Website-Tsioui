@@ -1,4 +1,7 @@
-.carousel {
+.fitcontent {
+  height: 10% !important;
+}
+.carousel-headline {
   margin: 0;
   padding-top: 0.5%;
   text-align: center;

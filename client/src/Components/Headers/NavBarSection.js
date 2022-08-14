@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom';
 
 export default function NavBarSection() {
   return (
     <>
-      <Nav fill className="justify-content-center" activeKey="/">
+      <Nav fill className="justify-content-center" activeKey="/home">
         <Nav.Item>
-          <Nav.Link className="navbarlink" href="/home">
+          <Nav.Link as={Link} to="/home" className="navbarlink">
             Home
           </Nav.Link>
         </Nav.Item>
