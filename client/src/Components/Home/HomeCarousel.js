@@ -4,9 +4,9 @@ import Carousel from 'react-bootstrap/Carousel';
 export default function HomeCarousel() {
   return (
     <Carousel>
-      <Carousel.Item>
+      <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100 fitcontent"
+          className="d-block w-100"
           src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="First slide"
         />
@@ -15,10 +15,10 @@ export default function HomeCarousel() {
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100 fitcontent"
-          src={process.env.PUBLIC_URL + '/images/p1.jpg'}
+          className="d-block w-100 fit-content"
+          src={process.env.PUBLIC_URL + '/images/girl-ge49d5bc60_640.jpg'}
           alt="Second slide"
         />
 
@@ -27,9 +27,9 @@ export default function HomeCarousel() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100 fitcontent"
+          className="d-block w-100 fit-content"
           src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="Third slide"
         />

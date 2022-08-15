@@ -50,6 +50,17 @@ function App() {
         />
         <Routes>
           <Route
+            path="/"
+            element={
+              <Home
+                setIsLogIn={isLogInhandle}
+                setnameOfUser={setnameOfUser}
+                setsessionTime={setsessionTime}
+                isLogIn={isLogIn}
+              />
+            }
+          />
+          <Route
             path="/home"
             element={
               <Home
@@ -61,7 +72,6 @@ function App() {
             }
           />
           <Route path="/shop" element={<Shop />} />
-          <Redirect to="/home" />
         </Routes>
       </BrowserRouter>
     </div>
