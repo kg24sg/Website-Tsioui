@@ -17,7 +17,7 @@ export default function HomeCarousel() {
       </Carousel.Item>
       <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100 fit-content"
+          className="d-block w-100"
           src={process.env.PUBLIC_URL + '/images/girl-ge49d5bc60_640.jpg'}
           alt="Second slide"
         />
@@ -29,7 +29,7 @@ export default function HomeCarousel() {
       </Carousel.Item>
       <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100 fit-content"
+          className="d-block w-100"
           src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="Third slide"
         />
