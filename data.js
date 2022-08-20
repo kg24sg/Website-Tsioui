@@ -1,4 +1,4 @@
-const data = {
+module.exports = {
   products: [
     {
       name: 'Nike Slim Shirt',
@@ -38,5 +38,3 @@ const data = {
     },
   ],
 };
-
-export default data;

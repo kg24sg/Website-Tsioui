@@ -13,15 +13,17 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const upload = multer();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
+var data = require('./data.js');
 const app = express();
 
 // app.use(express.static(path.join(__dirname + 'public')));
 // Exprees will serve up production assets
 app.use(express.static(path.join(__dirname, 'client/build')));
 // Express serve up index.html file if it doesn't recognize route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/index.html'));
-});
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/client/build/index.html'));
+// });
 
 app.use(
   session({
@@ -141,6 +143,10 @@ app.post('/signIn', function (req, res) {
       console.log('454545');
     }
   });
+});
+
+app.get('/api/products', (req, res) => {
+  res.json(data.products);
 });
 
 if (process.env.NODE_ENV == 'production') {

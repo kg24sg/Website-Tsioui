@@ -1,24 +1,29 @@
+import Button from 'react-bootstrap/Button';
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { Link } from 'react-router-dom';
 
 export default function HomeCarousel() {
   return (
-    <Carousel>
+    <Carousel fade controls={false} slide interval={3000} pause={false}>
       <Carousel.Item className="fit-content">
         <img
           className="d-block w-100"
           src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="First slide"
         />
-        <Carousel.Caption>
+        <Carousel.Caption className="first-carousel-caption">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <Button className="carousel-buttons" as={Link} to="/Product">
+            Shop
+          </Button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className="fit-content">
         <img
           className="d-block w-100"
-          src={process.env.PUBLIC_URL + '/images/girl-ge49d5bc60_640.jpg'}
+          src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="Second slide"
         />
 
@@ -34,11 +39,14 @@ export default function HomeCarousel() {
           alt="Third slide"
         />
 
-        <Carousel.Caption>
+        <Carousel.Caption className="third-carousel-caption">
           <h3>Third slide label</h3>
           <p>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
+          <Button as={Link} to="/Product" className="carousel-buttons">
+            Shop
+          </Button>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

@@ -12,7 +12,7 @@ export default function NavBarSection() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link className="navbarlink" href="/shop">
+          <Nav.Link as={Link} to="/shop" className="navbarlink">
             Shop
           </Nav.Link>
         </Nav.Item>

@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Headers/Header';
-import Shop from './Components/Shop/Shop';
+import ProductScreen from './Components/Product/ProductScreen';
 import Home from './Components/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ShowProduct from './Components/Product/ShowProduct';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -71,7 +72,8 @@ function App() {
               />
             }
           />
-          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop" element={<ProductScreen />} />
+          <Route path="/shop/product/:slug" element={<ShowProduct />} />
         </Routes>
       </BrowserRouter>
     </div>

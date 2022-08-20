@@ -1,16 +1,3 @@
-.fit-content {
-  max-height: 80vh; /* change this to whatever you want */
-  width: auto;
-}
-.carousel-headline {
-  margin: 0;
-  padding-top: 0.5%;
-  text-align: center;
-  background-color: #d2b1a6;
-  width: 100vw;
-  font-family: 'Montserrat Alternates', sans-serif;
-}
-
 .dropdown-toggle::after {
   display: none !important;
 }
@@ -148,4 +135,87 @@
 .loginBtn--google:focus {
   background: #e74b37;
   cursor: pointer;
+}
+
+/*Home Carousel*/
+.fit-content {
+  max-height: 80vh; /* change this to whatever you want */
+  width: auto;
+}
+.carousel-headline {
+  margin: 0;
+  padding-top: 0.5%;
+  text-align: center;
+  background-color: #d2b1a6;
+  width: 100vw;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.third-carousel-caption {
+  left: 70% !important;
+  top: 25% !important;
+  right: 0% !important;
+  width: fit-content;
+  block-size: fit-content;
+}
+
+.first-carousel-caption {
+  left: 5% !important;
+  top: 25% !important;
+  width: fit-content;
+  block-size: fit-content;
+}
+
+.carousel-indicators button {
+  width: 0.4rem !important;
+  height: 0.4rem !important;
+  border-radius: 50%;
+}
+
+.carousel-indicators button:not(:first-child) {
+  margin-left: 0.5rem;
+}
+
+.carousel-indicators .active {
+  background-color: #d2b1a6 !important;
+}
+
+.carousel-buttons {
+  background-color: #acbaad !important;
+  border-color: #ffffff !important;
+  border-radius: 35% !important;
+  color: #ffffff !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 50%;
+}
+
+.carousel-buttons:hover {
+  background-color: #acbaad !important;
+  border-color: #542f34 !important;
+  border-radius: 35% !important;
+  color: #542f34 !important;
+}
+
+/*Shop*/
+.main-products {
+  padding: 1rem;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  border: 1px solid #542f34;
+  margin: 1rem;
+}
+
+.product img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.product-info {
+  padding: 1rem;
 }
