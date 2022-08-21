@@ -1,3 +1,6 @@
+.site-container {
+  min-height: 100vh;
+}
 .dropdown-toggle::after {
   display: none !important;
 }
@@ -218,4 +221,24 @@
 
 .product-info {
   padding: 1rem;
+}
+
+.btn-primary {
+  background-color: #acbaad !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 50%;
+}
+
+.btn-primary:hover {
+  background-color: #acbaad !important;
+  border-color: #542f34 !important;
+  color: #542f34 !important;
+}
+
+/*Show Product*/
+
+.img-large {
+  max-width: 100%;
 }

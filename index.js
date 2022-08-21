@@ -146,7 +146,18 @@ app.post('/signIn', function (req, res) {
 });
 
 app.get('/api/products', (req, res) => {
-  res.json(data.products);
+  res.send(data.products);
+});
+
+app.get('/api/products/slug/:slug', (req, res) => {
+  console.log(req.params.slug);
+  const product = data.products.find((x) => x.slug === req.params.slug);
+  console.log(req.params.slug);
+  if (product) {
+    res.send(product);
+  } else {
+    res.send(404).send({ message: 'Product Not Found' });
+  }
 });
 
 if (process.env.NODE_ENV == 'production') {

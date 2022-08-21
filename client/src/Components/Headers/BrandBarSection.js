@@ -19,6 +19,7 @@ import Button from 'react-bootstrap/Button';
 // import Tabs from 'react-bootstrap/Tabs';
 import RegisterModal from '../LoginRegister/RegisterModal';
 import LogInModal from '../LoginRegister/LogInModal';
+import { LinkContainer } from 'react-router-bootstrap';
 // import { Link } from '@mui/material';
 
 export default function BrandBarSection(props) {
@@ -49,7 +50,7 @@ export default function BrandBarSection(props) {
                   <Hamburger />
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu class="humburger-menu" variant="dark">
+                <Dropdown.Menu className="humburger-menu" variant="dark">
                   <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
                     Another action
@@ -64,21 +65,23 @@ export default function BrandBarSection(props) {
           }
 
           <Col md={6}>
-            <div class="d-flex justify-content-start">
-              <Navbar.Brand href="#home">
-                <img
-                  alt=""
-                  src="/logo.svg"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                />{' '}
-                The brand
-              </Navbar.Brand>
+            <div className="d-flex justify-content-start">
+              <LinkContainer to="/">
+                <Navbar.Brand>
+                  <img
+                    alt=""
+                    src="/logo.svg"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                  />{' '}
+                  The brand
+                </Navbar.Brand>
+              </LinkContainer>
             </div>
           </Col>
           <Col>
-            <div class="d-flex  justify-content-start">
+            <div className="d-flex  justify-content-start">
               <Nav.Item>
                 <Nav.Link className="headerlink">
                   <BsPuzzle />
@@ -88,7 +91,7 @@ export default function BrandBarSection(props) {
           </Col>
 
           <Col>
-            <div class="d-flex justify-content-start">
+            <div className="d-flex justify-content-start">
               <Nav.Item>
                 <Nav.Link className="headerlink" href="/home">
                   <BsBookmarkHeart />
@@ -97,16 +100,16 @@ export default function BrandBarSection(props) {
             </div>
           </Col>
           <Col>
-            <div class="d-flex justify-content-start">
+            <div className="d-flex justify-content-start">
               <Nav.Item>
-                <Nav.Link class="headerlink" href="/home">
+                <Nav.Link className="headerlink" href="/home">
                   <BsSearch />
                 </Nav.Link>
               </Nav.Item>
             </div>
           </Col>
           <Col>
-            <div class="d-flex  justify-content-start">
+            <div className="d-flex  justify-content-start">
               <Nav.Item>
                 <Nav.Link className="headerlink" href="/home">
                   <BsFillCartFill />
@@ -116,7 +119,7 @@ export default function BrandBarSection(props) {
           </Col>
           {!props.isLogIn.isLogIn && (
             <Col>
-              <div class="d-flex  justify-content-start">
+              <div className="d-flex  justify-content-start">
                 <Nav.Item>
                   <Nav.Link className="headerlink" onClick={handleShow}>
                     <BsFillPersonFill />
@@ -127,7 +130,7 @@ export default function BrandBarSection(props) {
           )}
           {props.isLogIn.isLogIn && (
             <Col>
-              <div class="d-flex  justify-content-start">
+              <div className="d-flex  justify-content-start">
                 <Nav.Item>
                   <Nav.Link>
                     <Dropdown>
@@ -161,9 +164,9 @@ export default function BrandBarSection(props) {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div class="container">
-              <div class="row">
-                <div class="col-6">
+            <div className="container">
+              <div className="row">
+                <div className="col-6">
                   <Button
                     style={{
                       textAlign: 'center',
@@ -177,7 +180,7 @@ export default function BrandBarSection(props) {
                     Login
                   </Button>
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                   <Button
                     style={{
                       textAlign: 'center',
@@ -201,9 +204,9 @@ export default function BrandBarSection(props) {
                 borderColor: '#000000',
               }}
             />
-            <div class="container" className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center container">
               {showLogIn && (
-                <div class="row">
+                <div className="row">
                   <LogInModal
                     closeModal={handleClose}
                     setIsLogIn={props.setIsLogIn}
@@ -211,7 +214,7 @@ export default function BrandBarSection(props) {
                 </div>
               )}
               {showRegister && (
-                <div class="row">
+                <div className="row">
                   <RegisterModal
                     register={showRegister}
                     handleRegister={handleRegister}
@@ -223,14 +226,14 @@ export default function BrandBarSection(props) {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div class="container">
-              <div class="row">
-                <div class="col-6 text-center">
+            <div className="container">
+              <div className="row">
+                <div className="col-6 text-center">
                   <p>
                     <a href="https://www.google.com/">Google</a>
                   </p>
                 </div>
-                <div class="col-6 text-center">
+                <div className="col-6 text-center">
                   <p>
                     <a href="https://www.w3.org/">W3C</a>
                   </p>

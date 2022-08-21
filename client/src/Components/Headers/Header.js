@@ -2,7 +2,6 @@ import * as React from 'react';
 import Headline from './Headline';
 import BrandBarSection from './BrandBarSection';
 import NavBarSection from './NavBarSection';
-import Footer from './Footer';
 
 export default function Header(props) {
   return (
@@ -15,8 +14,6 @@ export default function Header(props) {
         isLogIn={props.isLogIn}
       />
       <NavBarSection />
-
-      <Footer />
     </div>
   );
 }

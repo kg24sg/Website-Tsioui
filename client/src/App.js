@@ -41,7 +41,7 @@ function App() {
   }, [isLogIn]);
 
   return (
-    <div>
+    <div className="d-flex flex-column site-container">
       <BrowserRouter>
         <Header
           setIsLogIn={isLogInhandle}
@@ -75,6 +75,9 @@ function App() {
           <Route path="/shop" element={<ProductScreen />} />
           <Route path="/shop/product/:slug" element={<ShowProduct />} />
         </Routes>
+        <footer>
+          <div className="text-center">All rights reserved</div>
+        </footer>
       </BrowserRouter>
     </div>
   );
