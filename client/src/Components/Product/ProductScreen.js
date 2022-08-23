@@ -7,7 +7,10 @@ import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import Product from './Product';
-
+import LoadingBox from '../globalFunctions/LoadingBox';
+import FormErrors from '../globalFunctions/formErorrs';
+import MessageBox from '../globalFunctions/MessageBox';
+import { getError } from '../../utils';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -35,7 +38,7 @@ export default function ProductScreen() {
         const result = await axios.get('api/products');
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
       // setProducts(result.data);
     };
@@ -50,9 +53,11 @@ export default function ProductScreen() {
             Featured Products
             <div className="products">
               {loading ? (
-                <div>Loading...</div>
+                <LoadingBox />
               ) : error ? (
-                <div>{error}</div>
+                <div>
+                  <MessageBox variant="danger">{error}</MessageBox>
+                </div>
               ) : (
                 <Row>
                   {products.map((product) => (

@@ -6,6 +6,7 @@ import Home from './Components/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ShowProduct from './Components/Product/ShowProduct';
+import { Helmet } from 'react-helmet-async';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -43,6 +44,9 @@ function App() {
   return (
     <div className="d-flex flex-column site-container">
       <BrowserRouter>
+        <Helmet>
+          <title>Tsioui Webstore</title>
+        </Helmet>
         <Header
           setIsLogIn={isLogInhandle}
           setnameOfUser={setnameOfUser}

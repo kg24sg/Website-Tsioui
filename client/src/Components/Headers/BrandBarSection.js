@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
@@ -20,6 +20,8 @@ import Button from 'react-bootstrap/Button';
 import RegisterModal from '../LoginRegister/RegisterModal';
 import LogInModal from '../LoginRegister/LogInModal';
 import { LinkContainer } from 'react-router-bootstrap';
+import Badge from 'react-bootstrap/Badge';
+import { Store } from '../../Store';
 // import { Link } from '@mui/material';
 
 export default function BrandBarSection(props) {
@@ -39,6 +41,8 @@ export default function BrandBarSection(props) {
   };
   //   const [key, setKey] = useState('home');
 
+  const { state } = useContext(Store);
+  const { cart } = state;
   return (
     <>
       <Navbar bg="dark" variant="dark" sticky="top">
@@ -111,8 +115,13 @@ export default function BrandBarSection(props) {
           <Col>
             <div className="d-flex  justify-content-start">
               <Nav.Item>
-                <Nav.Link className="headerlink" href="/home">
+                <Nav.Link className="headerlink" to="/cart">
                   <BsFillCartFill />
+                  {cart.cartItems.length > 0 && (
+                    <Badge pill bg="danger">
+                      {cart.cartItems.length}
+                    </Badge>
+                  )}
                 </Nav.Link>
               </Nav.Item>
             </div>

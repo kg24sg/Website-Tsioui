@@ -15,7 +15,7 @@ module.exports = {
       category: 'Shirts',
       image: '/images/p1.jpg',
       price: 80,
-      countInStock: 8,
+      countInStock: 0,
       description: 'high quality products',
     },
     {
