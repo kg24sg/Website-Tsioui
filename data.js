@@ -1,6 +1,7 @@
 module.exports = {
   products: [
     {
+      _id: '1',
       name: 'Nike Slim Shirt1',
       slug: 'nike-slim-shirt1',
       category: 'Shirts',
@@ -10,6 +11,7 @@ module.exports = {
       description: 'high quality products',
     },
     {
+      _id: '2',
       name: 'Nike Slim Shirt2',
       slug: 'nike-slim-shirt2',
       category: 'Shirts',
@@ -19,6 +21,7 @@ module.exports = {
       description: 'high quality products',
     },
     {
+      _id: '3',
       name: 'Nike Slim Shirt3',
       slug: 'nike-slim-shirt3',
       category: 'Shirts',
@@ -28,6 +31,7 @@ module.exports = {
       description: 'high quality products',
     },
     {
+      _id: '4',
       name: 'Nike Slim Shirt4',
       slug: 'nike-slim-shirt4',
       category: 'Shirts',

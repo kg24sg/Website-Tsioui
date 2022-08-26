@@ -242,3 +242,8 @@
 .img-large {
   max-width: 100%;
 }
+
+/*Cart Screen */
+.img-thumbnail {
+  height: 80px;
+}

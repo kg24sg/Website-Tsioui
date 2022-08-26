@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ShowProduct from './Components/Product/ShowProduct';
 import { Helmet } from 'react-helmet-async';
+import CartScreen from './Components/CartScreen/CartScreen';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -77,6 +78,7 @@ function App() {
             }
           />
           <Route path="/shop" element={<ProductScreen />} />
+          <Route path="/cart" element={<CartScreen />} />
           <Route path="/shop/product/:slug" element={<ShowProduct />} />
         </Routes>
         <footer>

@@ -160,6 +160,17 @@ app.get('/api/products/slug/:slug', (req, res) => {
   }
 });
 
+app.get('/api/products/:id', (req, res) => {
+  console.log(req.params.slug);
+  const product = data.products.find((x) => x._id === req.params.id);
+  console.log(req.params.slug);
+  if (product) {
+    res.send(product);
+  } else {
+    res.send(404).send({ message: 'Product Not Found' });
+  }
+});
+
 if (process.env.NODE_ENV == 'production') {
   app.use(express.static('client/build'));
 }
