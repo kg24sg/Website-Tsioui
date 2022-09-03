@@ -1,7 +1,4 @@
-import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import RegisterModal from '../LoginRegister/RegisterModal';
-import LogInModal from '../LoginRegister/LogInModal';
 import React, { useContext, useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';

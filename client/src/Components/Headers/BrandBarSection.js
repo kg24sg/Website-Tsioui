@@ -17,15 +17,11 @@ import {
 } from 'react-icons/bs';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-// import Tab from 'react-bootstrap/Tab';
-// import Tabs from 'react-bootstrap/Tabs';
 import RegisterModal from '../LoginRegister/RegisterModal';
 import LogInModal from '../LoginRegister/LogInModal';
 import { LinkContainer } from 'react-router-bootstrap';
 import Badge from 'react-bootstrap/Badge';
 import { Store } from '../../Store';
-import SignInScreen from '../SignInScreen/SignInScreen';
-// import { Link } from '@mui/material';
 
 export default function BrandBarSection(props) {
   const [show, setShow] = useState(false);
@@ -33,7 +29,6 @@ export default function BrandBarSection(props) {
   const [showLogIn, setshowLogIn] = useState(true);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const handleLogIn = () => {
     setshowLogIn(true);
     setshowRegister(false);

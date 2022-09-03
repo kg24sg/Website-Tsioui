@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 export default function Headline() {
-  const [show, setShow] = useState(true);
   return (
     <div>
       <Carousel

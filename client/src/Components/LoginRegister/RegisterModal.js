@@ -5,13 +5,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
-import { RestorePageOutlined } from '@mui/icons-material';
 import FormErrors from '../globalFunctions/formErorrs';
 
 export default function RegisterForm(props) {
   const [sendEmail, setsendEmail] = useState(false);
 
-  const handlesendEmail = (evt) => setsendEmail(evt.target.checked);
   const [formValidation, setformValidation] = useState({
     formErrors: { email: '', password: '', fullname: '', username: '' },
     formValid: true,
@@ -68,13 +66,13 @@ export default function RegisterForm(props) {
           : 'Password is too short';
         break;
       case 'userName':
-        userNameValid = !value.length == 0;
+        userNameValid = !value.length === 0;
         fieldValidationErrors.username = userNameValid
           ? ''
           : 'Username can not be empty';
         break;
       case 'fullName':
-        fullNameValid = !value.length == 0;
+        fullNameValid = !value.length === 0;
         fieldValidationErrors.fullname = fullNameValid
           ? ''
           : 'Your name can not be empty';
@@ -91,14 +89,6 @@ export default function RegisterForm(props) {
       formValid: emailValid && passwordValid && userNameValid && fullNameValid,
     });
   }
-
-  const handleEmailInd = (event) => setsEmailInd(event.target.value);
-  const handleDateOfBirth = (event) => setsDateOfBirth(event.target.value);
-
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: 'JWT fefege...',
-  };
 
   function registerUser(event) {
     event.preventDefault();

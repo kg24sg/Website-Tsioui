@@ -1,14 +1,10 @@
-import { Dvr } from '@mui/icons-material';
-import React, { Component, useEffect, useReducer, useState } from 'react';
-import { useParams } from 'react-router-dom';
-// import data from '../../data.js';
+import React, { Component, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import Product from './Product';
 import LoadingBox from '../globalFunctions/LoadingBox';
-import FormErrors from '../globalFunctions/formErorrs';
 import MessageBox from '../globalFunctions/MessageBox';
 import { getError } from '../../utils';
 const reducer = (state, action) => {

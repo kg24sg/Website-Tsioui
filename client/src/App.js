@@ -14,7 +14,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import ShippingAdressScreen from './Components/Shipping/ShippingAdressScreen';
 
 function App() {
-  const [data, setData] = React.useState(null);
   const [isLogIn, setIsLogIn] = React.useState({
     isLogIn: false,
     nameOfUser: '',
