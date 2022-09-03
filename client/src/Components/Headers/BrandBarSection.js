@@ -112,9 +112,9 @@ export default function BrandBarSection(props) {
           <Col>
             <div className="d-flex justify-content-start">
               <Nav.Item>
-                <Nav.Link className="headerlink" href="/home">
+                <Link className="headerlink" to="/home">
                   <BsSearch />
-                </Nav.Link>
+                </Link>
               </Nav.Item>
             </div>
           </Col>
