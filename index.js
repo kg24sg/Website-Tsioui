@@ -26,7 +26,6 @@ app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 // app.use(express.static(path.join(__dirname + 'public')));
 // Exprees will serve up production assets
-app.use(express.static(path.join(__dirname, 'client/build')));
 // Express serve up index.html file if it doesn't recognize route
 
 // app.get('*', (req, res) => {
@@ -159,6 +158,9 @@ app.use((err, req, res, next) => {
 
 if (process.env.NODE_ENV == 'production') {
   app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
 }
 
 app.listen(PORT, () => {
