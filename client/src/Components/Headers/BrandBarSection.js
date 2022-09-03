@@ -103,32 +103,32 @@ export default function BrandBarSection(props) {
           <Col>
             <div className="d-flex justify-content-start">
               <Nav.Item>
-                <Link className="headerlink" to="/home">
+                <Nav.Link className="headerlink" href="/home">
                   <BsBookmarkHeart />
-                </Link>
+                </Nav.Link>
               </Nav.Item>
             </div>
           </Col>
           <Col>
             <div className="d-flex justify-content-start">
               <Nav.Item>
-                <Link className="headerlink" to="/home">
+                <Nav.Link className="headerlink" href="/home">
                   <BsSearch />
-                </Link>
+                </Nav.Link>
               </Nav.Item>
             </div>
           </Col>
           <Col>
             <div className="d-flex  justify-content-start">
               <Nav.Item>
-                <Link className="headerlink" to="/cart">
+                <Nav.Link className="headerlink" href="/cart">
                   <BsFillCartFill />
                   {cart.cartItems.length > 0 && (
                     <Badge pill bg="danger">
                       {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                     </Badge>
                   )}
-                </Link>
+                </Nav.Link>
               </Nav.Item>
             </div>
           </Col>
@@ -136,9 +136,9 @@ export default function BrandBarSection(props) {
             <Col>
               <div className="d-flex  justify-content-start">
                 <Nav.Item>
-                  <Link className="headerlink" to="/signin">
+                  <Nav.Link className="headerlink" href="/signin">
                     <BsFillPersonFill />
-                  </Link>
+                  </Nav.Link>
                 </Nav.Item>
               </div>
             </Col>
