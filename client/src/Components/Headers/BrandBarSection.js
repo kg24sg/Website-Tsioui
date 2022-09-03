@@ -3,6 +3,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 // import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Sling as Hamburger } from 'hamburger-react';
@@ -22,6 +24,7 @@ import LogInModal from '../LoginRegister/LogInModal';
 import { LinkContainer } from 'react-router-bootstrap';
 import Badge from 'react-bootstrap/Badge';
 import { Store } from '../../Store';
+import SignInScreen from '../SignInScreen/SignInScreen';
 // import { Link } from '@mui/material';
 
 export default function BrandBarSection(props) {
@@ -41,8 +44,16 @@ export default function BrandBarSection(props) {
   };
   //   const [key, setKey] = useState('home');
 
-  const { state } = useContext(Store);
-  const { cart } = state;
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart, userInfo } = state;
+
+  const signoutHandler = () => {
+    ctxDispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('cartItems');
+    console.log(userInfo);
+  };
   return (
     <>
       <Navbar bg="dark" variant="dark" sticky="top">
@@ -115,7 +126,7 @@ export default function BrandBarSection(props) {
           <Col>
             <div className="d-flex  justify-content-start">
               <Nav.Item>
-                <Nav.Link className="headerlink" to="/cart">
+                <Nav.Link className="headerlink" href="/cart">
                   <BsFillCartFill />
                   {cart.cartItems.length > 0 && (
                     <Badge pill bg="danger">
@@ -126,32 +137,36 @@ export default function BrandBarSection(props) {
               </Nav.Item>
             </div>
           </Col>
-          {!props.isLogIn.isLogIn && (
+          {!userInfo && (
             <Col>
               <div className="d-flex  justify-content-start">
                 <Nav.Item>
-                  <Nav.Link className="headerlink" onClick={handleShow}>
+                  <Nav.Link className="headerlink" href="/signin">
                     <BsFillPersonFill />
                   </Nav.Link>
                 </Nav.Item>
               </div>
             </Col>
           )}
-          {props.isLogIn.isLogIn && (
+          {userInfo && (
             <Col>
               <div className="d-flex  justify-content-start">
-                <Nav.Item>
-                  <Nav.Link>
-                    <Dropdown>
-                      <Dropdown.Toggle variant="dark" className="headerlink">
-                        {props.isLogIn.fullname} <BsFillPersonFill />
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item href="#">Sign Out</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Nav.Link>
-                </Nav.Item>
+                <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>User Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/orderhistory">
+                    <NavDropdown.Item>Order History</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Divider />
+                  <Link
+                    className="dropdown-item"
+                    to="#signout"
+                    onClick={signoutHandler}
+                  >
+                    Sign Out
+                  </Link>
+                </NavDropdown>
               </div>
             </Col>
           )}

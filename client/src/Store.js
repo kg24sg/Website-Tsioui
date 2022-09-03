@@ -3,8 +3,16 @@ import React, { createContext, useReducer } from 'react';
 export const Store = createContext();
 
 const initialState = {
+  userInfo: localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo'))
+    : null,
   cart: {
-    cartItems: [],
+    shippingAddress: localStorage.getItem('shippingAddress')
+      ? JSON.parse(localStorage.getItem('shippingAddress'))
+      : {},
+    cartItems: localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems'))
+      : [],
   },
 };
 
@@ -22,7 +30,7 @@ function reducer(state, action) {
             item._id === existItem._id ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
-
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     case 'CART_REMOVE_ITEM': {
       console.log(action.payload._id);
@@ -30,7 +38,23 @@ function reducer(state, action) {
         (item) => item._id !== action.payload._id
       );
       console.log(cartItems);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
+    }
+    case 'USER_SIGNIN': {
+      return { ...state, userInfo: action.payload };
+    }
+    case 'SAVE_SHIPPING_ADDRESS':
+      return {
+        ...state,
+        cart: { ...state.cart, shippingAddress: action.payload },
+      };
+    case 'USER_SIGNOUT': {
+      return {
+        ...state,
+        userInfo: null,
+        cart: { cartItems: [], shippingAddress: {} },
+      };
     }
     default:
       return state;

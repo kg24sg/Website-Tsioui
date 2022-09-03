@@ -1,5 +1,4 @@
 // server/index.js
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -14,8 +13,17 @@ const upload = multer();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
 var data = require('./data.js');
+const seedRouter = require('./routes/seedRoutes.js');
+const productRouter = require('./routes/productRoutes.js');
+const userRouter = require('./routes/userRoutes.js');
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/seed', seedRouter);
+app.use('/api/products', productRouter);
+app.use('/api/users', userRouter);
 // app.use(express.static(path.join(__dirname + 'public')));
 // Exprees will serve up production assets
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -145,30 +153,8 @@ app.post('/signIn', function (req, res) {
   });
 });
 
-app.get('/api/products', (req, res) => {
-  res.send(data.products);
-});
-
-app.get('/api/products/slug/:slug', (req, res) => {
-  console.log(req.params.slug);
-  const product = data.products.find((x) => x.slug === req.params.slug);
-  console.log(req.params.slug);
-  if (product) {
-    res.send(product);
-  } else {
-    res.send(404).send({ message: 'Product Not Found' });
-  }
-});
-
-app.get('/api/products/:id', (req, res) => {
-  console.log(req.params.slug);
-  const product = data.products.find((x) => x._id === req.params.id);
-  console.log(req.params.slug);
-  if (product) {
-    res.send(product);
-  } else {
-    res.send(404).send({ message: 'Product Not Found' });
-  }
+app.use((err, req, res, next) => {
+  req.status(500).send({ message: err.message });
 });
 
 if (process.env.NODE_ENV == 'production') {

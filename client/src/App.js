@@ -8,6 +8,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ShowProduct from './Components/Product/ShowProduct';
 import { Helmet } from 'react-helmet-async';
 import CartScreen from './Components/CartScreen/CartScreen';
+import SignInScreen from './Components/SignInScreen/SignInScreen';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ShippingAdressScreen from './Components/Shipping/ShippingAdressScreen';
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -44,6 +48,7 @@ function App() {
 
   return (
     <div className="d-flex flex-column site-container">
+      <ToastContainer position="bottom-center" limit={1} />
       <BrowserRouter>
         <Helmet>
           <title>Tsioui Webstore</title>
@@ -79,6 +84,8 @@ function App() {
           />
           <Route path="/shop" element={<ProductScreen />} />
           <Route path="/cart" element={<CartScreen />} />
+          <Route path="/signIn" element={<SignInScreen />} />
+          <Route path="/shipping" element={<ShippingAdressScreen />} />
           <Route path="/shop/product/:slug" element={<ShowProduct />} />
         </Routes>
         <footer>

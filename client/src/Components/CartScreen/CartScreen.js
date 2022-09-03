@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,11 +8,16 @@ import MessageBox from '../globalFunctions/MessageBox';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { BsPatchMinusFill, BsPatchPlusFill, BsTrashFill } from 'react-icons/bs';
 import axios from 'axios';
+import SignInScreen from '../SignInScreen/SignInScreen';
 
 export default function CartScreen() {
+  const [show, setShow] = useState(false);
+
+  const navigate = useNavigate();
+
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -34,6 +39,10 @@ export default function CartScreen() {
   const removeItemHandler = (item) => {
     console.log(item);
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
+
+  const checkOutHandler = () => {
+    navigate('/signin?redirect=/shipping');
   };
   return (
     <div>
@@ -114,6 +123,7 @@ export default function CartScreen() {
                     <Button
                       type="button"
                       variant="primary"
+                      onClick={checkOutHandler}
                       disabled={cartItems.length === 0}
                     >
                       Proceed to Ckeckout
@@ -125,6 +135,7 @@ export default function CartScreen() {
           </Card>
         </Col>
       </Row>
+      {show && <SignInScreen></SignInScreen>}
     </div>
   );
 }
