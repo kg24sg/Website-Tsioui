@@ -47,6 +47,7 @@ export default function BrandBarSection(props) {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('cartItems');
+    localStorage.removeItem('paymentMethod');
     console.log(userInfo);
   };
   return (

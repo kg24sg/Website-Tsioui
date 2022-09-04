@@ -12,6 +12,10 @@ import SignInScreen from './Components/SignInScreen/SignInScreen';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ShippingAdressScreen from './Components/Shipping/ShippingAdressScreen';
+import SignupScreen from './Components/SignInScreen/SignupScreen';
+import PaymentMethodScreen from './Components/Shipping/PaymentMethodScreen';
+import PlaceOrderScreen from './Components/Shipping/PlaceOrderScreen';
+import OrderScreen from './Components/Shipping/OrderScreen';
 
 function App() {
   const [isLogIn, setIsLogIn] = React.useState({
@@ -84,7 +88,11 @@ function App() {
           <Route path="/shop" element={<ProductScreen />} />
           <Route path="/cart" element={<CartScreen />} />
           <Route path="/signIn" element={<SignInScreen />} />
+          <Route path="/signup" element={<SignupScreen />} />
+          <Route path="/placeorder" element={<PlaceOrderScreen />} />
+          <Route path="/order/:id" element={<OrderScreen />} />
           <Route path="/shipping" element={<ShippingAdressScreen />} />
+          <Route path="/payment" element={<PaymentMethodScreen />} />
           <Route path="/shop/product/:slug" element={<ShowProduct />} />
         </Routes>
         <footer>
