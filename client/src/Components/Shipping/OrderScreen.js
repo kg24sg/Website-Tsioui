@@ -74,11 +74,11 @@ export default function OrderScreen() {
       try {
         dispatch({ type: 'PAY_REQUEST' });
         const { data } = await axios.put(
-          `/api/order/${order._id}/pay`,
+          `/api/orders/${order._id}/pay`,
           details,
-          { headers: { authorization: `Bearer ${userInfo.toker}` } }
+          { headers: { authorization: `Bearer ${userInfo.token}` } }
         );
-        dispatch({ type: 'PAY_SUCCESS'.payload.data });
+        dispatch({ type: 'PAY_SUCCESS', payload: data });
         toast.success('Order is paid');
       } catch (err) {
         dispatch({ type: 'PAY_FAIL', payload: getError(err) });
