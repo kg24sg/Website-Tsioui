@@ -52,7 +52,7 @@ export default function BrandBarSection(props) {
   };
   return (
     <>
-      <Navbar bg="dark" variant="dark" sticky="top">
+      <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
         <Container fluid>
           {
             <Col xs={1}>
@@ -91,6 +91,7 @@ export default function BrandBarSection(props) {
               </LinkContainer>
             </div>
           </Col>
+
           <Col>
             <div className="d-flex  justify-content-start">
               <Nav.Item>

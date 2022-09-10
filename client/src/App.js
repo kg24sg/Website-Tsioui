@@ -16,6 +16,8 @@ import SignupScreen from './Components/SignInScreen/SignupScreen';
 import PaymentMethodScreen from './Components/Shipping/PaymentMethodScreen';
 import PlaceOrderScreen from './Components/Shipping/PlaceOrderScreen';
 import OrderScreen from './Components/Shipping/OrderScreen';
+import OrderHistoryScreen from './Components/Shipping/OrderHistoryScreen';
+import ProfileScreen from './Components/SignInScreen/ProfileScreen';
 
 function App() {
   const [isLogIn, setIsLogIn] = React.useState({
@@ -89,8 +91,10 @@ function App() {
           <Route path="/cart" element={<CartScreen />} />
           <Route path="/signIn" element={<SignInScreen />} />
           <Route path="/signup" element={<SignupScreen />} />
+          <Route path="/profile" element={<ProfileScreen />} />
           <Route path="/placeorder" element={<PlaceOrderScreen />} />
           <Route path="/order/:id" element={<OrderScreen />} />
+          <Route path="/orderhistory" element={<OrderHistoryScreen />} />
           <Route path="/shipping" element={<ShippingAdressScreen />} />
           <Route path="/payment" element={<PaymentMethodScreen />} />
           <Route path="/shop/product/:slug" element={<ShowProduct />} />
