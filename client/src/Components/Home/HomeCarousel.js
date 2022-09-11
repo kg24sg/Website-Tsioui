@@ -15,7 +15,7 @@ export default function HomeCarousel() {
         <Carousel.Caption className="first-carousel-caption">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          <Button className="carousel-buttons" as={Link} to="/Product">
+          <Button className="carousel-buttons" as={Link} to="/shop">
             Shop
           </Button>
         </Carousel.Caption>
@@ -44,7 +44,7 @@ export default function HomeCarousel() {
           <p>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
-          <Button as={Link} to="/Product" className="carousel-buttons">
+          <Button as={Link} to="/shop" className="carousel-buttons">
             Shop
           </Button>
         </Carousel.Caption>

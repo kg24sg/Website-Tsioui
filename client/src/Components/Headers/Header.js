@@ -6,14 +6,13 @@ import NavBarSection from './NavBarSection';
 export default function Header(props) {
   return (
     <div>
-      <Headline />
-      <BrandBarSection
+      {/* <BrandBarSection
         setIsLogIn={props.setIsLogIn}
         setnameOfUser={props.setIsLogIn}
         setsessionTime={props.setsessionTime}
         isLogIn={props.isLogIn}
-      />
-      <NavBarSection />
+      /> */}
+      {/* <NavBarSection /> */}
     </div>
   );
 }

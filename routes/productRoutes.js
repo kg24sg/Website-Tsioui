@@ -1,5 +1,5 @@
 const express = require('express');
-
+const expressAsyncHandler = require('express-async-handler');
 const data = require('../data');
 const Product = require('../models/productModel');
 
@@ -9,6 +9,14 @@ productRouter.get('/', async (req, res) => {
   const products = await Product.find();
   res.send(products);
 });
+
+productRouter.get(
+  '/categories',
+  expressAsyncHandler(async (req, res) => {
+    const categories = await Product.find().distinct('category');
+    res.send(categories);
+  })
+);
 
 productRouter.get('/slug/:slug', async (req, res) => {
   console.log(req.params.slug);
