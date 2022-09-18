@@ -40,6 +40,10 @@ import Button from 'react-bootstrap/Button';
 import { LinkContainer } from 'react-router-bootstrap';
 import Badge from 'react-bootstrap/Badge';
 import SearchBox from './Components/Search/SearchBox';
+import SearchScreen from './Components/Search/SearchScreen';
+import ProtectedRoute from './Components/Administrator/ProtectedRoute';
+import DashboardScrenn from './Components/Administrator/DashboardScrenn';
+import AdminRoute from './Components/Administrator/AdminRoute';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -176,15 +180,24 @@ function App() {
                 </Nav.Item>
               </div>
 
-              <div className="ml-auto  ms-5">
-                <Nav.Item>
-                  <Nav.Link className="headerlink">
-                    Admin
-                    <BsPuzzle />
-                  </Nav.Link>
-                </Nav.Item>
-              </div>
-
+              {userInfo && userInfo.isAdmin && (
+                <div className="ml-auto  ms-5">
+                  <NavDropdown title="Admin" id="admin-nav-dropdown">
+                    <LinkContainer to="/admin/dashboard">
+                      <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/productList">
+                      <NavDropdown.Item>Products</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/orderlist">
+                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/userlist">
+                      <NavDropdown.Item>Users</NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                </div>
+              )}
               <div className="ml-auto ms-5">
                 <Nav.Item>
                   <Nav.Link className="headerlink" href="/home">
@@ -240,6 +253,16 @@ function App() {
             </Container>
           </Navbar>
           <Routes>
+            {/* /*Admin Routes*/}
+            <Route
+              path="/admin/dashboard"
+              element={
+                <AdminRoute>
+                  <DashboardScrenn />
+                </AdminRoute>
+              }
+            ></Route>
+            {/* /*Admin Routes*/}
             <Route
               path="/"
               element={
@@ -267,11 +290,33 @@ function App() {
             <Route path="/signIn" element={<SignInScreen />} />
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
-            <Route path="/placeorder" element={<PlaceOrderScreen />} />
-            <Route path="/order/:id" element={<OrderScreen />} />
-            <Route path="/orderhistory" element={<OrderHistoryScreen />} />
+            <Route
+              path="/placeorder"
+              element={
+                <ProtectedRoute>
+                  <PlaceOrderScreen />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/order/:id"
+              element={
+                <ProtectedRoute>
+                  <OrderScreen />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/orderhistory"
+              element={
+                <ProtectedRoute>
+                  <OrderHistoryScreen />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/shipping" element={<ShippingAdressScreen />} />
             <Route path="/payment" element={<PaymentMethodScreen />} />
+            <Route path="/search" element={<SearchScreen />} />
             <Route path="/shop/product/:slug" element={<ShowProduct />} />
           </Routes>
         </div>

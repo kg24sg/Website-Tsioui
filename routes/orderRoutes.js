@@ -35,6 +35,32 @@ orderRouter.post(
 );
 
 orderRouter.get(
+  '/summary',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.aggregate([
+      {
+        $group: {
+          _id: null,
+          numOrders: { $sum: 1 },
+          totalSales: { $sum: '$totalPrice' },
+        },
+      },
+    ]);
+    const users = await User.aggregate([
+      {
+        $group: {
+          _id: null,
+          numUsers: { $sum: 1 },
+        },
+      },
+    ]);
+    res.send({ users, orders });
+  })
+);
+
+orderRouter.get(
   '/mine',
   isAuth,
   expressAsyncHandler(async (req, res) => {

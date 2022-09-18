@@ -116,14 +116,24 @@ export default function BrandBarSection(props) {
               </Nav.Item>
             </div>
 
-            <div className="ml-auto  ms-5">
-              <Nav.Item>
-                <Nav.Link className="headerlink">
-                  Admin
-                  <BsPuzzle />
-                </Nav.Link>
-              </Nav.Item>
-            </div>
+            {userInfo && userInfo.isAdmin && (
+              <div className="ml-auto  ms-5">
+                <NavDropdown title="Admin" id="admin-nav-dropdown">
+                  <LinkContainer to="/dashboard">
+                    <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/productList">
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/orderlist">
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/userlist">
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              </div>
+            )}
 
             <div className="ml-auto ms-5">
               <Nav.Item>
