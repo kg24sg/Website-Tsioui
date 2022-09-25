@@ -2,7 +2,7 @@ const express = require('express');
 const expressAsyncHandler = require('express-async-handler');
 const data = require('../data');
 const Product = require('../models/productModel');
-
+const { isAuth, isAdmin } = require('../utils.js');
 const productRouter = express.Router();
 
 productRouter.get('/', async (req, res) => {
@@ -10,13 +10,92 @@ productRouter.get('/', async (req, res) => {
   res.send(products);
 });
 
-const PAGE_SIZE = 3;
+productRouter.post(
+  '/',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const newProduct = new Product({
+      name: 'sample name' + Date.now(),
+      slug: 'sample-name-' + Date.now(),
+      image: '/images/p1.jpg',
+      category: 'sample category',
+      description: 'sample description',
+      price: 0,
+      countInStock: 0,
+    });
 
+    const product = await newProduct.save();
+    res.send({ message: 'Product Created', product });
+  })
+);
+
+productRouter.put(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
+    if (product) {
+      product.name = req.body.name;
+      product.slug = req.body.slug;
+      product.price = req.body.price;
+      product.image = req.body.image;
+      product.category = req.body.category;
+      product.countInStock = req.body.countInStock;
+      product.description = req.body.description;
+      await product.save();
+      res.send({ message: 'Product Not Found' });
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+);
+
+productRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      await product.remove();
+      res.send({ message: 'Product Deleted' });
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+);
+
+const PAGE_SIZE = 3;
+productRouter.get(
+  '/admin',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const { query } = req;
+    const page = query.page || 1;
+    const pageSize = query.pageSize || PAGE_SIZE;
+
+    const products = await Product.find()
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+
+    const countProducts = await Product.countDocuments();
+    res.send({
+      products,
+      countProducts,
+      page,
+      pages: Math.ceil(countProducts / pageSize),
+    });
+  })
+);
 productRouter.get(
   '/search',
   expressAsyncHandler(async (req, res) => {
     const { query } = req;
-    console.log(query);
+
     const pageSize = query.pageSize || PAGE_SIZE;
     const page = query.page || 1;
     const category = query.category || '';
@@ -58,8 +137,6 @@ productRouter.get(
         : order === 'newest'
         ? { createdAt: -1 }
         : { _id: -1 };
-    console.log(queryFilter);
-    console.log(priceFilter);
 
     const products = await Product.find({
       ...queryFilter,
@@ -69,7 +146,7 @@ productRouter.get(
       .sort(sortOrder)
       .skip(pageSize * (page - 1))
       .limit(pageSize);
-    console.log('here');
+
     const countProducts = await Product.countDocuments({
       ...queryFilter,
       ...categoryFilter,
@@ -94,9 +171,8 @@ productRouter.get(
 );
 
 productRouter.get('/slug/:slug', async (req, res) => {
-  console.log(req.params.slug);
   const product = await Product.findOne({ slug: req.params.slug });
-  console.log(req.params.slug);
+
   if (product) {
     res.send(product);
   } else {
@@ -105,9 +181,8 @@ productRouter.get('/slug/:slug', async (req, res) => {
 });
 
 productRouter.get('/:id', async (req, res) => {
-  console.log(req.params);
   const product = await Product.findById(req.params.id);
-  console.log(req.params);
+
   if (product) {
     res.send(product);
   } else {

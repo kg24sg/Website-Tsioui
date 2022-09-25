@@ -44,6 +44,9 @@ import SearchScreen from './Components/Search/SearchScreen';
 import ProtectedRoute from './Components/Administrator/ProtectedRoute';
 import DashboardScrenn from './Components/Administrator/DashboardScrenn';
 import AdminRoute from './Components/Administrator/AdminRoute';
+import ProductListScreen from './Components/Administrator/ProductListScreen';
+import ProductEditScreen from './Components/Administrator/ProductEditScreen';
+import OrderListScreen from './Components/Administrator/OrderListScreen';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -186,13 +189,13 @@ function App() {
                     <LinkContainer to="/admin/dashboard">
                       <NavDropdown.Item>Dashboard</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to="/admin/productList">
+                    <LinkContainer to="/admin/products">
                       <NavDropdown.Item>Products</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to="/admin/orderlist">
+                    <LinkContainer to="/admin/orders">
                       <NavDropdown.Item>Orders</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to="/admin/userlist">
+                    <LinkContainer to="/admin/users">
                       <NavDropdown.Item>Users</NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
@@ -259,6 +262,30 @@ function App() {
               element={
                 <AdminRoute>
                   <DashboardScrenn />
+                </AdminRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/products"
+              element={
+                <AdminRoute>
+                  <ProductListScreen />
+                </AdminRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/orders"
+              element={
+                <AdminRoute>
+                  <OrderListScreen />
+                </AdminRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/product/:id"
+              element={
+                <AdminRoute>
+                  <ProductEditScreen />
                 </AdminRoute>
               }
             ></Route>
