@@ -222,6 +222,10 @@
   padding: 1rem;
 }
 
+button.thumbnail {
+  padding: 0;
+}
+
 .btn-primary {
   background-color: #acbaad !important;
   border-color: #ffffff !important;

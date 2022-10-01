@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -27,6 +27,7 @@ const reducer = (state, action) => {
   }
 };
 export default function ShowProduct() {
+  const [selectedImage, setSelectedImage] = useState('');
   const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
@@ -80,7 +81,7 @@ export default function ShowProduct() {
             <Col md={6}>
               <img
                 className="img-large"
-                src={product.image}
+                src={selectedImage || product.image}
                 alt={product.name}
               />
             </Col>
@@ -93,6 +94,28 @@ export default function ShowProduct() {
                   <h1>{product.name}</h1>
                 </ListGroup.Item>
                 <ListGroup.Item>Price : €{product.price}</ListGroup.Item>
+                <ListGroup.Item>
+                  <Row xs={1} md={2} className="g-2">
+                    {[product.image, ...product.images].map((x) => (
+                      <Col key={x}>
+                        <Card>
+                          <Button
+                            className="thumbnail"
+                            type="button"
+                            variant="light"
+                            onClick={() => setSelectedImage(x)}
+                          >
+                            <Card.Img
+                              variatn="top"
+                              src={x}
+                              alt="product"
+                            ></Card.Img>
+                          </Button>
+                        </Card>
+                      </Col>
+                    ))}
+                  </Row>
+                </ListGroup.Item>
                 <ListGroup.Item>
                   Description:
                   <p>{product.description}</p>
