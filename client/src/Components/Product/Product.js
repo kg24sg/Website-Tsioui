@@ -1,17 +1,24 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
 import React, { useContext } from 'react';
 import { Store } from '../../Store';
 import axios from 'axios';
-
+import FavouriteButton from '../FavouriteCartScreen/FavouriteButton';
 function Product(props) {
   const { product } = props;
+  const { favoritePressed } = props;
+  const { setfavoritePressed } = props;
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
+    userInfo,
     cart: { cartItems },
   } = state;
+
+  const { favourites } = state;
 
   const addToCartHandler = async (item) => {
     const existItem = cartItems.find((x) => x._id === item._id);
@@ -40,7 +47,19 @@ function Product(props) {
           <Card.Title>{product.name}</Card.Title>
         </Link>
       </Card.Body>
-      <Card.Text>€{product.price}</Card.Text>
+      <Card.Text>
+        <Row>
+          <Col md={10}>€{product.price}</Col>
+          <Col md={2}>
+            <FavouriteButton
+              productToFavorite={product}
+              userFrom={userInfo}
+              favoritePressed={favoritePressed}
+              setfavoritePressed={setfavoritePressed}
+            ></FavouriteButton>
+          </Col>
+        </Row>
+      </Card.Text>
       {product.countInStock === 0 ? (
         <Button variant="light" disabled>
           {' '}

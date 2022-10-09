@@ -49,6 +49,7 @@ import ProductEditScreen from './Components/Administrator/ProductEditScreen';
 import OrderListScreen from './Components/Administrator/OrderListScreen';
 import UserListScreen from './Components/Administrator/UserListScreen';
 import UserEditScreen from './Components/Administrator/UserEditScreen';
+import FavouriteScreen from './Components/FavouriteCartScreen/FavouriteScreen';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -64,17 +65,27 @@ function App() {
 
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [favoritePressed, setFavoritePressed] = useState(false);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(`/api/products/categories`);
         setCategories(data);
+        const favoritesData = await axios.get(
+          `/api/favorites/peruser/${userInfo._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
+        setFavorites(favoritesData.data);
+        setFavoritePressed(false);
       } catch (err) {
         toast.error(getError(err));
       }
     };
     fetchCategories();
-  }, []);
+  }, [favoritePressed]);
 
   const [isLogIn, setIsLogIn] = React.useState({
     isLogIn: false,
@@ -205,8 +216,16 @@ function App() {
               )}
               <div className="ml-auto ms-5">
                 <Nav.Item>
-                  <Nav.Link className="headerlink" href="/home">
+                  <Nav.Link
+                    className="headerlink"
+                    href="/signin?redirect=/favourites"
+                  >
                     Favourites <BsBookmarkHeart />
+                    {favorites && favorites.length > 0 && (
+                      <Badge pill bg="danger">
+                        {favorites.length}
+                      </Badge>
+                    )}
                   </Nav.Link>
                 </Nav.Item>
               </div>
@@ -330,8 +349,17 @@ function App() {
                 />
               }
             />
-            <Route path="/shop" element={<ProductScreen />} />
+            <Route
+              path="/shop"
+              element={
+                <ProductScreen
+                  favoritePressed={favoritePressed}
+                  setfavoritePressed={setFavoritePressed}
+                />
+              }
+            />
             <Route path="/cart" element={<CartScreen />} />
+            <Route path="/favourites" element={<FavouriteScreen />} />
             <Route path="/signIn" element={<SignInScreen />} />
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />

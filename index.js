@@ -18,6 +18,7 @@ const productRouter = require('./routes/productRoutes.js');
 const userRouter = require('./routes/userRoutes.js');
 const orderRouter = require('./routes/orderRoutes.js');
 const uploadRouter = require('./routes/uploadRoutes.js');
+const favoriteRouter = require('./routes/favoriteRoutes.js');
 const app = express();
 
 app.use(express.json());
@@ -35,6 +36,7 @@ app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/favorites', favoriteRouter);
 // app.use(express.static(path.join(__dirname + 'public')));
 // Exprees will serve up production assets
 // Express serve up index.html file if it doesn't recognize route
