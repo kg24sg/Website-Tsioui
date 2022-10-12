@@ -27,8 +27,10 @@ const reducer = (state, action) => {
   }
 };
 
-export default function FavouriteScreen() {
-  const [favoritePressed, setFavoritePressed] = useState(false);
+export default function FavouriteScreen(props) {
+  const { favoritePressed2 } = props;
+  const { setfavoritePressed2 } = props;
+  //   const [favoritePressed, setFavoritePressed] = useState(false);
   const { state } = useContext(Store);
   const { userInfo } = state;
   const [{ loading, error, favorites }, dispatch] = useReducer(
@@ -51,13 +53,13 @@ export default function FavouriteScreen() {
           }
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-        setFavoritePressed(false);
+        setfavoritePressed2(false);
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
     fetchData();
-  }, [favoritePressed]);
+  }, [favoritePressed2]);
 
   return (
     <>
@@ -84,8 +86,8 @@ export default function FavouriteScreen() {
                     >
                       <Product
                         product={favorite}
-                        favoritePressed={favoritePressed}
-                        setfavoritePressed={setFavoritePressed}
+                        favoritePressed={favoritePressed2}
+                        setfavoritePressed={setfavoritePressed2}
                       ></Product>
                     </Col>
                   ))}

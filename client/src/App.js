@@ -140,7 +140,7 @@ function App() {
                 : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
             }
           >
-            <Nav className="flex-column text-white w-100 p-2">
+            <Nav className="flex-column text-white w-100 p-2 ">
               <Nav.Item>
                 <strong>Categories</strong>
               </Nav.Item>
@@ -165,7 +165,6 @@ function App() {
           >
             <Container fluid>
               <Button
-                className="ms-5"
                 variant="dark"
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
@@ -197,7 +196,7 @@ function App() {
               </div>
 
               {userInfo && userInfo.isAdmin && (
-                <div className="ml-auto  ms-5">
+                <div className="ml-auto  ms-5 fs-6">
                   <NavDropdown title="Admin" id="admin-nav-dropdown">
                     <LinkContainer to="/admin/dashboard">
                       <NavDropdown.Item>Dashboard</NavDropdown.Item>
@@ -359,7 +358,15 @@ function App() {
               }
             />
             <Route path="/cart" element={<CartScreen />} />
-            <Route path="/favourites" element={<FavouriteScreen />} />
+            <Route
+              path="/favourites"
+              element={
+                <FavouriteScreen
+                  favoritePressed2={favoritePressed}
+                  setfavoritePressed2={setFavoritePressed}
+                />
+              }
+            />
             <Route path="/signIn" element={<SignInScreen />} />
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
