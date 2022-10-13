@@ -22,6 +22,8 @@ import Headline from './Components/Headers/Headline';
 import { Store } from './Store';
 import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -50,6 +52,8 @@ import OrderListScreen from './Components/Administrator/OrderListScreen';
 import UserListScreen from './Components/Administrator/UserListScreen';
 import UserEditScreen from './Components/Administrator/UserEditScreen';
 import FavouriteScreen from './Components/FavouriteCartScreen/FavouriteScreen';
+import styled from '@emotion/styled';
+
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -174,7 +178,7 @@ function App() {
                   <BsFillCaretRightSquareFill />
                 )}
               </Button>
-              <div className="ms-5">
+              <div className="ms-2">
                 <LinkContainer to="/">
                   <Navbar.Brand>
                     <img
@@ -189,14 +193,14 @@ function App() {
                 </LinkContainer>
               </div>
 
-              <div className=" me-auto ms-5">
+              <div className="me-auto ms-2  search-form">
                 <Nav.Item>
                   <SearchBox />
                 </Nav.Item>
               </div>
 
               {userInfo && userInfo.isAdmin && (
-                <div className="ml-auto  ms-5 fs-6">
+                <div className="  ms-3 fs-6">
                   <NavDropdown title="Admin" id="admin-nav-dropdown">
                     <LinkContainer to="/admin/dashboard">
                       <NavDropdown.Item>Dashboard</NavDropdown.Item>
@@ -213,13 +217,14 @@ function App() {
                   </NavDropdown>
                 </div>
               )}
-              <div className="ml-auto ms-5">
+              <div className=" ms-3">
                 <Nav.Item>
                   <Nav.Link
                     className="headerlink"
                     href="/signin?redirect=/favourites"
                   >
-                    Favourites <BsBookmarkHeart />
+                    {/* Favourites */}
+                    <BsBookmarkHeart />
                     {favorites && favorites.length > 0 && (
                       <Badge pill bg="danger">
                         {favorites.length}
@@ -229,10 +234,10 @@ function App() {
                 </Nav.Item>
               </div>
 
-              <div className="ml-auto ms-5">
+              <div className=" ms-3">
                 <Nav.Item>
                   <Nav.Link className="headerlink" href="/cart">
-                    Cart
+                    {/* Cart */}
                     <BsFillCartFill />
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
@@ -244,7 +249,7 @@ function App() {
               </div>
 
               {!userInfo && (
-                <div className="ml-auto ms-5">
+                <div className="ms-3">
                   <Nav.Item>
                     <Nav.Link className="headerlink" href="/signin">
                       Sign In
@@ -254,7 +259,7 @@ function App() {
                 </div>
               )}
               {userInfo && (
-                <div className="ml-auto ms-5">
+                <div className="ml-auto ms-3">
                   <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>User Profile</NavDropdown.Item>
@@ -273,6 +278,19 @@ function App() {
                   </NavDropdown>
                 </div>
               )}
+            </Container>
+          </Navbar>
+          <Navbar
+            bg="dark"
+            variant="dark"
+            sticky="top"
+            expand="lg"
+            className="d-flex"
+          >
+            <Container fluid>
+              <Nav.Item className="search-form-mobile">
+                <SearchBox />
+              </Nav.Item>
             </Container>
           </Navbar>
           <Routes>
@@ -396,7 +414,15 @@ function App() {
             />
             <Route path="/shipping" element={<ShippingAdressScreen />} />
             <Route path="/payment" element={<PaymentMethodScreen />} />
-            <Route path="/search" element={<SearchScreen />} />
+            <Route
+              path="/search"
+              element={
+                <SearchScreen
+                  favoritePressed={favoritePressed}
+                  setfavoritePressed={setFavoritePressed}
+                />
+              }
+            />
             <Route path="/shop/product/:slug" element={<ShowProduct />} />
           </Routes>
         </div>

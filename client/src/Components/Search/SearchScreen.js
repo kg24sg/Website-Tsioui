@@ -46,7 +46,9 @@ const prices = [
     value: '101-500',
   },
 ];
-export default function SearchScreen() {
+export default function SearchScreen(props) {
+  const { favoritePressed } = props;
+  const { setfavoritePressed } = props;
   const navigate = useNavigate();
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
@@ -204,7 +206,11 @@ export default function SearchScreen() {
               <Row>
                 {products.map((product) => (
                   <Col sm={6} lg={4} className="mb-3" key={product._id}>
-                    <Product product={product}></Product>
+                    <Product
+                      favoritePressed={favoritePressed}
+                      setfavoritePressed={setfavoritePressed}
+                      product={product}
+                    ></Product>
                   </Col>
                 ))}
               </Row>

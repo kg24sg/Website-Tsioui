@@ -294,3 +294,20 @@ button.thumbnail {
 .text-bold {
   font-weight: bold;
 }
+
+.search-form {
+  width: 300px !important;
+}
+
+.search-form-mobile {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .search-form {
+    display: none !important;
+  }
+  .search-form-mobile {
+    display: grid;
+    width: fit-content !important;
+  }
+}
