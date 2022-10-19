@@ -76,14 +76,16 @@ function App() {
       try {
         const { data } = await axios.get(`/api/products/categories`);
         setCategories(data);
-        const favoritesData = await axios.get(
-          `/api/favorites/peruser/${userInfo._id}`,
-          {
-            headers: { Authorization: `Bearer ${userInfo.token}` },
-          }
-        );
-        setFavorites(favoritesData.data);
-        setFavoritePressed(false);
+        if (userInfo) {
+          const favoritesData = await axios.get(
+            `/api/favorites/peruser/${userInfo._id}`,
+            {
+              headers: { Authorization: `Bearer ${userInfo.token}` },
+            }
+          );
+          setFavorites(favoritesData.data);
+          setFavoritePressed(false);
+        }
       } catch (err) {
         toast.error(getError(err));
       }
@@ -178,7 +180,13 @@ function App() {
                   <BsFillCaretRightSquareFill />
                 )}
               </Button>
-              <div className="ms-2">
+
+              <div className="me-auto ms-2  search-form">
+                <Nav.Item>
+                  <SearchBox />
+                </Nav.Item>
+              </div>
+              <div className="me-auto  ms-2">
                 <LinkContainer to="/">
                   <Navbar.Brand>
                     <img
@@ -192,13 +200,6 @@ function App() {
                   </Navbar.Brand>
                 </LinkContainer>
               </div>
-
-              <div className="me-auto ms-2  search-form">
-                <Nav.Item>
-                  <SearchBox />
-                </Nav.Item>
-              </div>
-
               {userInfo && userInfo.isAdmin && (
                 <div className="  ms-3 fs-6">
                   <NavDropdown title="Admin" id="admin-nav-dropdown">
@@ -252,7 +253,6 @@ function App() {
                 <div className="ms-3">
                   <Nav.Item>
                     <Nav.Link className="headerlink" href="/signin">
-                      Sign In
                       <BsFillPersonFill />
                     </Nav.Link>
                   </Nav.Item>

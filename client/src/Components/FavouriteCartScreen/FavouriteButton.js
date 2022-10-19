@@ -55,6 +55,7 @@ export default function FavouriteButton(props) {
     const fetchData = async () => {
       try {
         if (userInfo) {
+          console.log(userInfo);
           dispatch({ type: 'FETCH_REQUEST' });
           const { data } = await axios.get(
             `/api/favorites/peruser/${props.userFrom._id}/${props.productToFavorite._id}`,

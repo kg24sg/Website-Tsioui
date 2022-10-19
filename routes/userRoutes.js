@@ -69,6 +69,8 @@ userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
+    console.log(user);
+    console.log('user');
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
         res.send({
@@ -82,6 +84,22 @@ userRouter.post(
       }
     }
     res.status(401).send({ message: 'Invalid email or password' });
+  })
+);
+
+userRouter.post(
+  '/checkuser',
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      res.send({
+        check: true,
+      });
+      return;
+    }
+    res.send({
+      check: false,
+    });
   })
 );
 
