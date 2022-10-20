@@ -97,8 +97,42 @@ export default function SignInScreen(props) {
     navigate(redirect || '/');
   };
 
-  const responseFacebook = (response) => {
-    console.log(response);
+  const responseFacebook = async (response) => {
+    const name = response.name;
+    const email = response.email;
+    const password = '';
+    let id = '';
+    const { data } = await Axios.post('/api/users/checkuser', {
+      email,
+      password,
+    });
+
+    if (!data.check) {
+      const { data } = await Axios.post('/api/users/signup', {
+        name,
+        email,
+        password,
+      });
+      id = data._id;
+    } else {
+      const { data } = await Axios.post('/api/users/signin', {
+        email,
+        password,
+      });
+      id = data._id;
+    }
+    console.log('allreadylogin');
+    const data2 = {
+      _id: id,
+      name: response.name,
+      email: response.email,
+      isAdmin: false,
+      token: generateToken(response),
+    };
+
+    ctxDispatch({ type: 'USER_SIGNIN', payload: data2 });
+    localStorage.setItem('userInfo', JSON.stringify(data2));
+    navigate(redirect || '/');
   };
 
   return (

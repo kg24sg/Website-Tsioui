@@ -280,19 +280,17 @@ function App() {
               )}
             </Container>
           </Navbar>
-          <Navbar
-            bg="dark"
-            variant="dark"
-            sticky="top"
-            expand="lg"
-            className="d-flex"
-          >
-            <Container fluid>
-              <Nav.Item className="search-form-mobile">
-                <SearchBox />
-              </Nav.Item>
-            </Container>
-          </Navbar>
+
+          <Container fluid variant="dark">
+            <Row className=" justify-content-md-center">
+              <Col md={{ span: 6, offset: 3 }}>
+                <Nav.Item className="search-form-mobile">
+                  <SearchBox />
+                </Nav.Item>
+              </Col>
+            </Row>
+          </Container>
+
           <Routes>
             {/* /*Admin Routes*/}
             <Route
