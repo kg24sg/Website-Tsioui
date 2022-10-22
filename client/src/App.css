@@ -142,7 +142,6 @@
 /*Home Carousel*/
 .fit-content {
   max-height: 80vh; /* change this to whatever you want */
-  width: auto;
 }
 .carousel-headline {
   margin: 0;

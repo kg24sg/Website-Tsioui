@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function HomeCarousel() {
   return (
-    <div className=" w-100">
+    <div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-12">
@@ -14,21 +14,14 @@ export default function HomeCarousel() {
         </div>
         <div className="row">
           <div className="col-12">
-            <Carousel
-              className=" w-100"
-              fade
-              controls={false}
-              slide
-              interval={3000}
-              pause={false}
-            >
+            <Carousel fade controls={false} slide interval={3000} pause={false}>
               <Carousel.Item className="fit-content">
                 <img
                   className=" w-100"
                   src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                   alt="First slide"
                 />
-                <Carousel.Caption className="justify-content-start">
+                <Carousel.Caption className="justify-content-start first-carousel-caption">
                   <h3>First slide label</h3>
                   <p>
                     Nulla vitae elit libero, a pharetra augue mollis interdum.
@@ -60,7 +53,7 @@ export default function HomeCarousel() {
                     alt="Third slide"
                   />
                 </div>
-                <Carousel.Caption className="justify-content-end">
+                <Carousel.Caption className="justify-content-end third-carousel-caption">
                   <h3>Third slide label</h3>
                   <p>
                     Praesent commodo cursus magna, vel scelerisque nisl
