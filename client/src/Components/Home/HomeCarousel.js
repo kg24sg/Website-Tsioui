@@ -16,11 +16,13 @@ export default function HomeCarousel() {
           <div className="col-12">
             <Carousel fade controls={false} slide interval={3000} pause={false}>
               <Carousel.Item className="fit-content">
-                <img
-                  className=" w-100"
-                  src={process.env.PUBLIC_URL + '/images/p1.jpg'}
-                  alt="First slide"
-                />
+                <div className="slide">
+                  <img
+                    className=" w-100"
+                    src={process.env.PUBLIC_URL + '/images/p1.jpg'}
+                    alt="First slide"
+                  />
+                </div>
                 <Carousel.Caption className="justify-content-start">
                   <h3>First slide label</h3>
                   <p>
@@ -32,11 +34,13 @@ export default function HomeCarousel() {
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item className="fit-content">
-                <img
-                  className=" w-100"
-                  src={process.env.PUBLIC_URL + '/images/p1.jpg'}
-                  alt="Second slide"
-                />
+                <div className="slide">
+                  <img
+                    className=" w-100"
+                    src={process.env.PUBLIC_URL + '/images/p1.jpg'}
+                    alt="Second slide"
+                  />
+                </div>
 
                 <Carousel.Caption>
                   <h3>Second slide label</h3>
@@ -46,12 +50,13 @@ export default function HomeCarousel() {
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item className="fit-content">
-                <img
-                  className=" w-100"
-                  src={process.env.PUBLIC_URL + '/images/p1.jpg'}
-                  alt="Third slide"
-                />
-
+                <div className="slide">
+                  <img
+                    className=" w-100"
+                    src={process.env.PUBLIC_URL + '/images/p1.jpg'}
+                    alt="Third slide"
+                  />
+                </div>
                 <Carousel.Caption className="justify-content-end">
                   <h3>Third slide label</h3>
                   <p>
