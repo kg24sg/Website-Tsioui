@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function HomeCarousel() {
   return (
-    <div>
+    <div className=" w-100">
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-12">
@@ -14,14 +14,20 @@ export default function HomeCarousel() {
         </div>
         <div className="row">
           <div className="col-12">
-            <Carousel fade controls={false} slide interval={3000} pause={false}>
+            <Carousel
+              className=" w-100"
+              fade
+              controls={false}
+              slide
+              interval={3000}
+              pause={false}
+            >
               <Carousel.Item className="fit-content">
-                <div className="slide">
-                  <img
-                    src={process.env.PUBLIC_URL + '/images/p1.jpg'}
-                    alt="First slide"
-                  />
-                </div>
+                <img
+                  className=" w-100"
+                  src={process.env.PUBLIC_URL + '/images/p1.jpg'}
+                  alt="First slide"
+                />
                 <Carousel.Caption className="justify-content-start">
                   <h3>First slide label</h3>
                   <p>
@@ -33,12 +39,11 @@ export default function HomeCarousel() {
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item className="fit-content">
-                <div className="slide">
-                  <img
-                    src={process.env.PUBLIC_URL + '/images/p1.jpg'}
-                    alt="Second slide"
-                  />
-                </div>
+                <img
+                  className=" w-100"
+                  src={process.env.PUBLIC_URL + '/images/p1.jpg'}
+                  alt="Second slide"
+                />
 
                 <Carousel.Caption>
                   <h3>Second slide label</h3>
@@ -50,6 +55,7 @@ export default function HomeCarousel() {
               <Carousel.Item className="fit-content">
                 <div className="slide">
                   <img
+                    className=" w-100"
                     src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                     alt="Third slide"
                   />
