@@ -17,7 +17,7 @@ export default function HomeCarousel() {
             <Carousel fade controls={false} slide interval={3000} pause={false}>
               <Carousel.Item className="fit-content">
                 <img
-                  className="d-block w-100"
+                  className=" w-100"
                   src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                   alt="First slide"
                 />
@@ -33,7 +33,7 @@ export default function HomeCarousel() {
               </Carousel.Item>
               <Carousel.Item className="fit-content">
                 <img
-                  className="d-block w-100"
+                  className=" w-100"
                   src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                   alt="Second slide"
                 />
@@ -47,7 +47,7 @@ export default function HomeCarousel() {
               </Carousel.Item>
               <Carousel.Item className="fit-content">
                 <img
-                  className="d-block w-100"
+                  className=" w-100"
                   src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                   alt="Third slide"
                 />
