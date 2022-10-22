@@ -8,11 +8,11 @@ export default function HomeCarousel() {
     <Carousel fade controls={false} slide interval={3000} pause={false}>
       <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100"
+          className="d-flex w-100"
           src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="First slide"
         />
-        <Carousel.Caption className="first-carousel-caption">
+        <Carousel.Caption className="justify-content-start">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           <Button className="carousel-buttons" as={Link} to="/shop">
@@ -22,7 +22,7 @@ export default function HomeCarousel() {
       </Carousel.Item>
       <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100"
+          className="d-flex w-100"
           src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="Second slide"
         />
@@ -34,12 +34,12 @@ export default function HomeCarousel() {
       </Carousel.Item>
       <Carousel.Item className="fit-content">
         <img
-          className="d-block w-100"
+          className="d-flex w-100"
           src={process.env.PUBLIC_URL + '/images/p1.jpg'}
           alt="Third slide"
         />
 
-        <Carousel.Caption className="third-carousel-caption">
+        <Carousel.Caption className="justify-content-end">
           <h3>Third slide label</h3>
           <p>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.

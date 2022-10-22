@@ -281,9 +281,9 @@ function App() {
             </Container>
           </Navbar>
 
-          <Container fluid variant="dark">
-            <Row className=" justify-content-md-center">
-              <Col md={{ span: 6, offset: 3 }}>
+          <Container fluid variant="dark" className="bg-dark">
+            <Row className=" justify-content-center">
+              <Col sm={{ span: 6, offset: 3 }}>
                 <Nav.Item className="search-form-mobile">
                   <SearchBox />
                 </Nav.Item>
