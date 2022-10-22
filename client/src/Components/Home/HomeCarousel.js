@@ -18,7 +18,6 @@ export default function HomeCarousel() {
               <Carousel.Item className="fit-content">
                 <div className="slide">
                   <img
-                    className=" w-100"
                     src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                     alt="First slide"
                   />
@@ -36,7 +35,6 @@ export default function HomeCarousel() {
               <Carousel.Item className="fit-content">
                 <div className="slide">
                   <img
-                    className=" w-100"
                     src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                     alt="Second slide"
                   />
@@ -52,7 +50,6 @@ export default function HomeCarousel() {
               <Carousel.Item className="fit-content">
                 <div className="slide">
                   <img
-                    className=" w-100"
                     src={process.env.PUBLIC_URL + '/images/p1.jpg'}
                     alt="Third slide"
                   />
