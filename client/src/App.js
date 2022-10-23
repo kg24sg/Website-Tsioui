@@ -53,6 +53,8 @@ import UserListScreen from './Components/Administrator/UserListScreen';
 import UserEditScreen from './Components/Administrator/UserEditScreen';
 import FavouriteScreen from './Components/FavouriteCartScreen/FavouriteScreen';
 import styled from '@emotion/styled';
+import CategoryListScreen from './Components/Administrator/CategoryListScreen';
+import CategoryEditScreen from './Components/Administrator/CategoryEditScreen ';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -209,6 +211,9 @@ function App() {
                     <LinkContainer to="/admin/products">
                       <NavDropdown.Item>Products</NavDropdown.Item>
                     </LinkContainer>
+                    <LinkContainer to="/admin/categories">
+                      <NavDropdown.Item>Categories</NavDropdown.Item>
+                    </LinkContainer>
                     <LinkContainer to="/admin/orders">
                       <NavDropdown.Item>Orders</NavDropdown.Item>
                     </LinkContainer>
@@ -326,6 +331,14 @@ function App() {
               }
             ></Route>
             <Route
+              path="/admin/categories"
+              element={
+                <AdminRoute>
+                  <CategoryListScreen />
+                </AdminRoute>
+              }
+            ></Route>
+            <Route
               path="/admin/product/:id"
               element={
                 <AdminRoute>
@@ -338,6 +351,14 @@ function App() {
               element={
                 <AdminRoute>
                   <UserEditScreen />
+                </AdminRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/category/:id"
+              element={
+                <AdminRoute>
+                  <CategoryEditScreen />
                 </AdminRoute>
               }
             ></Route>

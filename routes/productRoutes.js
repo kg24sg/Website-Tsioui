@@ -1,6 +1,7 @@
 const express = require('express');
 const expressAsyncHandler = require('express-async-handler');
 const data = require('../data');
+const Category = require('../models/categoryModel');
 const Product = require('../models/productModel');
 const { isAuth, isAdmin } = require('../utils.js');
 const productRouter = express.Router();
@@ -167,6 +168,22 @@ productRouter.get(
   '/categories',
   expressAsyncHandler(async (req, res) => {
     const categories = await Product.find().distinct('category');
+    const fetchData = async () => {
+      for (const item of categories) {
+        const category = await Category.find({
+          name: item,
+        });
+
+        if (category.length === 0) {
+          const newCategory = await new Category({
+            name: item,
+            image: 'empty',
+          });
+          newCategory.save();
+        }
+      }
+    };
+    await fetchData();
     res.send(categories);
   })
 );

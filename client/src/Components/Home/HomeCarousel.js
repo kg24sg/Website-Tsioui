@@ -9,7 +9,9 @@ export default function HomeCarousel() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-12">
-            <h3>React Bootstrap Carousel</h3>
+            <h3 className="h3-header ">
+              <a>Explore our Website</a>
+            </h3>
           </div>
         </div>
         <div className="row">

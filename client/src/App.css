@@ -154,15 +154,15 @@
 
 .third-carousel-caption {
   left: 70% !important;
-  top: 25% !important;
-  right: 0% !important;
+  top: 10% !important;
+
   width: fit-content;
   block-size: fit-content;
 }
 
 .first-carousel-caption {
   left: 5% !important;
-  top: 25% !important;
+  top: 10% !important;
   width: fit-content;
   block-size: fit-content;
 }
@@ -195,6 +195,13 @@
   border-color: #542f34 !important;
   border-radius: 35% !important;
   color: #542f34 !important;
+}
+
+.h3-header {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif !important;
+  text-shadow: 1px 1px 2px #542f34;
+  padding-top: 0.5%;
 }
 
 /*Shop*/
