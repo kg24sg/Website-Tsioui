@@ -73,31 +73,63 @@ export default function CarouselCategories() {
                 >
                   {/* {categories.map((category) => ( */}
                   <Card style={{ width: '18rem' }}>
+                    <img
+                      src={
+                        categories[
+                          ((index % 3) + parseInt(index / 3) * 3) %
+                            categories.length
+                        ].image
+                      }
+                      className="card-img-top"
+                      alt={
+                        categories[
+                          ((index % 3) + parseInt(index / 3) * 3) %
+                            categories.length
+                        ].name
+                      }
+                    />
                     <Card.Body>
                       <Card.Title>
                         {
                           categories[
-                            ((index % 3) + parseInt(index / 3) * 3) % 4
+                            ((index % 3) + parseInt(index / 3) * 3) %
+                              categories.length
                           ].name
                         }
                       </Card.Title>
                       <Card.Text>
-                        {((index % 3) + parseInt(index / 3) * 3) % 4}+ Some
-                        quick example text to build on the card title and make
-                        up the bulk of the card's content.
+                        {((index % 3) + parseInt(index / 3) * 3) %
+                          categories.length}
+                        + Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
                       </Card.Text>
                       <Button variant="primary">Go somewhere</Button>
                     </Card.Body>
                   </Card>
 
                   <Card style={{ width: '18rem' }}>
+                    <img
+                      src={
+                        categories[
+                          (((index + 1) % 3) + parseInt((index + 1) / 3) * 3) %
+                            categories.length
+                        ].image
+                      }
+                      className="card-img-top"
+                      alt={
+                        categories[
+                          (((index + 1) % 3) + parseInt((index + 1) / 3) * 3) %
+                            categories.length
+                        ].name
+                      }
+                    />
                     <Card.Body>
                       <Card.Title>
                         {
                           categories[
                             (((index + 1) % 3) +
                               parseInt((index + 1) / 3) * 3) %
-                              4
+                              categories.length
                           ].name
                         }
                       </Card.Title>
@@ -112,6 +144,21 @@ export default function CarouselCategories() {
                   </Card>
 
                   <Card style={{ width: '18rem' }}>
+                    <img
+                      src={
+                        categories[
+                          (((index + 2) % 3) + parseInt((index + 2) / 3) * 3) %
+                            4
+                        ].image
+                      }
+                      className="card-img-top"
+                      alt={
+                        categories[
+                          (((index + 2) % 3) + parseInt((index + 2) / 3) * 3) %
+                            4
+                        ].name
+                      }
+                    />
                     <Card.Body>
                       <Card.Title>
                         {
