@@ -55,6 +55,7 @@ import FavouriteScreen from './Components/FavouriteCartScreen/FavouriteScreen';
 import styled from '@emotion/styled';
 import CategoryListScreen from './Components/Administrator/CategoryListScreen';
 import CategoryEditScreen from './Components/Administrator/CategoryEditScreen ';
+import Footer from './Components/Home/Footer';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -445,9 +446,7 @@ function App() {
             <Route path="/shop/product/:slug" element={<ShowProduct />} />
           </Routes>
         </div>
-        <footer>
-          <div className="text-center">All rights reserved</div>
-        </footer>
+        <Footer></Footer>
       </BrowserRouter>
     </div>
   );

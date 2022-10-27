@@ -37,9 +37,7 @@ export default function CarouselCategories() {
     const fecthData = async () => {
       try {
         dispatch({ type: 'FTECH_REQUEST' });
-        const { data } = await axios.get(`/api/categories`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(`/api/categories`);
         console.log(data);
         dispatch({
           type: 'FETCH_SUCCESS',
@@ -72,7 +70,10 @@ export default function CarouselCategories() {
                   gap={5}
                 >
                   {/* {categories.map((category) => ( */}
-                  <Card style={{ width: '18rem' }}>
+                  <Card
+                    className="carousel-category "
+                    style={{ width: '18rem' }}
+                  >
                     <img
                       src={
                         categories[
@@ -80,7 +81,7 @@ export default function CarouselCategories() {
                             categories.length
                         ].image
                       }
-                      className="card-img-top"
+                      className="card-img-top carousel-category"
                       alt={
                         categories[
                           ((index % 3) + parseInt(index / 3) * 3) %
@@ -107,7 +108,10 @@ export default function CarouselCategories() {
                     </Card.Body>
                   </Card>
 
-                  <Card style={{ width: '18rem' }}>
+                  <Card
+                    className=" carousel-category"
+                    style={{ width: '18rem' }}
+                  >
                     <img
                       src={
                         categories[
@@ -115,7 +119,7 @@ export default function CarouselCategories() {
                             categories.length
                         ].image
                       }
-                      className="card-img-top"
+                      className="card-img-top carousel-category"
                       alt={
                         categories[
                           (((index + 1) % 3) + parseInt((index + 1) / 3) * 3) %
@@ -143,7 +147,10 @@ export default function CarouselCategories() {
                     </Card.Body>
                   </Card>
 
-                  <Card style={{ width: '18rem' }}>
+                  <Card
+                    className="carousel-category"
+                    style={{ width: '18rem' }}
+                  >
                     <img
                       src={
                         categories[
@@ -151,7 +158,7 @@ export default function CarouselCategories() {
                             4
                         ].image
                       }
-                      className="card-img-top"
+                      className="card-img-top carousel-category"
                       alt={
                         categories[
                           (((index + 2) % 3) + parseInt((index + 2) / 3) * 3) %
