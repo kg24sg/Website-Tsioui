@@ -326,7 +326,7 @@ button.thumbnail {
     width: fit-content !important;
   }
 }
-/**/
+/*Footer*/
 .footer-basic {
   padding: 40px 0;
   background-color: #ffffff;
@@ -385,4 +385,8 @@ button.thumbnail {
   font-size: 13px;
   color: #aaa;
   margin-bottom: 0;
+}
+
+.nav-link-category {
+  color: #542f34 !important;
 }

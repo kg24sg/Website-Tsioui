@@ -56,6 +56,7 @@ import styled from '@emotion/styled';
 import CategoryListScreen from './Components/Administrator/CategoryListScreen';
 import CategoryEditScreen from './Components/Administrator/CategoryEditScreen ';
 import Footer from './Components/Home/Footer';
+import OffcanvasCategories from './Components/Headers/OffcanvasCategories';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -141,8 +142,9 @@ function App() {
           setsessionTime={setsessionTime}
           isLogIn={isLogIn}
         />
+
         <div className={sidebarIsOpen ? 'active-cont' : ''}>
-          <div
+          {/* <div
             className={
               sidebarIsOpen
                 ? 'active-nav side-navbar d-flex justify-contet-between flex-wrap flex-column'
@@ -164,7 +166,7 @@ function App() {
                 </Nav.Item>
               ))}
             </Nav>
-          </div>
+          </div> */}
           <Navbar
             bg="dark"
             variant="dark"
@@ -173,7 +175,10 @@ function App() {
             className="d-flex"
           >
             <Container fluid>
-              <Button
+              <OffcanvasCategories
+                categories={categories}
+              ></OffcanvasCategories>
+              {/* <Button
                 variant="dark"
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
@@ -182,7 +187,7 @@ function App() {
                 ) : (
                   <BsFillCaretRightSquareFill />
                 )}
-              </Button>
+              </Button> */}
 
               <div className="me-auto ms-2  search-form">
                 <Nav.Item>
