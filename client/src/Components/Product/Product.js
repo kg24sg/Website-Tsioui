@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useContext } from 'react';
 import { Store } from '../../Store';
 import axios from 'axios';
@@ -11,7 +11,7 @@ function Product(props) {
   const { product } = props;
   const { favoritePressed } = props;
   const { setfavoritePressed } = props;
-
+  const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     userInfo,
@@ -37,6 +37,9 @@ function Product(props) {
     return;
   };
 
+  const finilizeAddToCart = async (slug) => {
+    navigate(`product/${slug}`);
+  };
   return (
     <Card>
       <Link to={`product/${product.slug}`}>
@@ -66,7 +69,10 @@ function Product(props) {
           Out of stock
         </Button>
       ) : (
-        <Button onClick={() => addToCartHandler(product)}>Add to cart</Button>
+        <Button onClick={() => finilizeAddToCart(product.slug)}>
+          Add to cart
+        </Button>
+        /* <Button onClick={() => addToCartHandler(product)}>Add to cart</Button> */
       )}
     </Card>
   );

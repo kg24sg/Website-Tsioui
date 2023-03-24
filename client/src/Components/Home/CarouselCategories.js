@@ -4,6 +4,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Link, useNavigate } from 'react-router-dom';
 import 'react-multi-carousel/lib/styles.css';
 import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import { Store } from '../../Store';
 import axios from 'axios';
@@ -61,130 +63,133 @@ export default function CarouselCategories() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div className="bg-dark bg-opacity-25 container-fluid">
-          <Carousel style={{ height: 500 }}>
+          <Carousel>
             {categories.map((category, index) => (
-              <Carousel.Item style={{ height: 500 }}>
+              <Carousel.Item>
                 <Stack
                   direction="horizontal"
                   className="h-100 justify-content-center align-items-center"
                   gap={5}
                 >
                   {/* {categories.map((category) => ( */}
-                  <Card
-                    className="carousel-category "
-                    style={{ width: '18rem' }}
-                  >
-                    <img
-                      src={
-                        categories[
-                          ((index % 3) + parseInt(index / 3) * 3) %
-                            categories.length
-                        ].image
-                      }
-                      className="card-img-top carousel-category"
-                      alt={
-                        categories[
-                          ((index % 3) + parseInt(index / 3) * 3) %
-                            categories.length
-                        ].name
-                      }
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        {
-                          categories[
-                            ((index % 3) + parseInt(index / 3) * 3) %
-                              categories.length
-                          ].name
-                        }
-                      </Card.Title>
-                      <Card.Text>
-                        {((index % 3) + parseInt(index / 3) * 3) %
-                          categories.length}
-                        + Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </Card.Text>
-                      <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                  </Card>
-
-                  <Card
-                    className=" carousel-category"
-                    style={{ width: '18rem' }}
-                  >
-                    <img
-                      src={
-                        categories[
-                          (((index + 1) % 3) + parseInt((index + 1) / 3) * 3) %
-                            categories.length
-                        ].image
-                      }
-                      className="card-img-top carousel-category"
-                      alt={
-                        categories[
-                          (((index + 1) % 3) + parseInt((index + 1) / 3) * 3) %
-                            categories.length
-                        ].name
-                      }
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        {
-                          categories[
-                            (((index + 1) % 3) +
+                  <Row style={{ padding: '3rem' }}>
+                    <Col md={4} sm={4}>
+                      <Card className="carousel-category ">
+                        <img
+                          src={
+                            categories[
+                              ((index % 3) + parseInt(index / 3) * 3) %
+                                categories.length
+                            ].image
+                          }
+                          className="card-img-top carousel-category"
+                          alt={
+                            categories[
+                              ((index % 3) + parseInt(index / 3) * 3) %
+                                categories.length
+                            ].name
+                          }
+                        />
+                        <Card.Body>
+                          <Card.Title>
+                            {
+                              categories[
+                                ((index % 3) + parseInt(index / 3) * 3) %
+                                  categories.length
+                              ].name
+                            }
+                          </Card.Title>
+                          <Card.Text>
+                            {((index % 3) + parseInt(index / 3) * 3) %
+                              categories.length}
+                            + Some quick example text to build on the card title
+                            and make up the bulk of the card's content.
+                          </Card.Text>
+                          <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                    <Col md={4} sm={4}>
+                      <Card className=" carousel-category">
+                        <img
+                          src={
+                            categories[
+                              (((index + 1) % 3) +
+                                parseInt((index + 1) / 3) * 3) %
+                                categories.length
+                            ].image
+                          }
+                          className="card-img-top carousel-category"
+                          alt={
+                            categories[
+                              (((index + 1) % 3) +
+                                parseInt((index + 1) / 3) * 3) %
+                                categories.length
+                            ].name
+                          }
+                        />
+                        <Card.Body>
+                          <Card.Title>
+                            {
+                              categories[
+                                (((index + 1) % 3) +
+                                  parseInt((index + 1) / 3) * 3) %
+                                  categories.length
+                              ].name
+                            }
+                          </Card.Title>
+                          <Card.Text>
+                            {(((index + 1) % 3) +
                               parseInt((index + 1) / 3) * 3) %
-                              categories.length
-                          ].name
-                        }
-                      </Card.Title>
-                      <Card.Text>
-                        {(((index + 1) % 3) + parseInt((index + 1) / 3) * 3) %
-                          4}{' '}
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </Card.Text>
-                      <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                  </Card>
-
-                  <Card
-                    className="carousel-category"
-                    style={{ width: '18rem' }}
-                  >
-                    <img
-                      src={
-                        categories[
-                          (((index + 2) % 3) + parseInt((index + 2) / 3) * 3) %
-                            4
-                        ].image
-                      }
-                      className="card-img-top carousel-category"
-                      alt={
-                        categories[
-                          (((index + 2) % 3) + parseInt((index + 2) / 3) * 3) %
-                            4
-                        ].name
-                      }
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        {
-                          categories[
-                            (((index + 2) % 3) +
+                              categories.length}{' '}
+                            Some quick example text to build on the card title
+                            and make up the bulk of the card's content.
+                          </Card.Text>
+                          <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                    <Col md={4} sm={4}>
+                      <Card className="carousel-category">
+                        <img
+                          src={
+                            categories[
+                              (((index + 2) % 3) +
+                                parseInt((index + 2) / 3) * 3) %
+                                categories.length
+                            ].image
+                          }
+                          className="card-img-top carousel-category"
+                          alt={
+                            categories[
+                              (((index + 2) % 3) +
+                                parseInt((index + 2) / 3) * 3) %
+                                categories.length
+                            ].name
+                          }
+                        />
+                        <Card.Body>
+                          <Card.Title>
+                            {
+                              categories[
+                                (((index + 2) % 3) +
+                                  parseInt((index + 2) / 3) * 3) %
+                                  categories.length
+                              ].name
+                            }
+                          </Card.Title>
+                          <Card.Text>
+                            {(((index + 2) % 3) +
                               parseInt((index + 2) / 3) * 3) %
-                              4
-                          ].name
-                        }
-                      </Card.Title>
-                      <Card.Text>
-                        {(((index + 2) % 3) + parseInt((index + 2) / 3) * 3) %
-                          4}
-                        + Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </Card.Text>
-                      <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                  </Card>
+                              categories.length}
+                            + Some quick example text to build on the card title
+                            and make up the bulk of the card's content.
+                          </Card.Text>
+                          <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
                 </Stack>
               </Carousel.Item>
             ))}

@@ -28,7 +28,7 @@ export default function HomeCarousel() {
                   <p>
                     Nulla vitae elit libero, a pharetra augue mollis interdum.
                   </p>
-                  <Button className="carousel-buttons" as={Link} to="/shop">
+                  <Button className="carousel-buttons" as={Link} to="/search">
                     Shop
                   </Button>
                 </Carousel.Caption>
@@ -61,7 +61,7 @@ export default function HomeCarousel() {
                     Praesent commodo cursus magna, vel scelerisque nisl
                     consectetur.
                   </p>
-                  <Button as={Link} to="/shop" className="carousel-buttons">
+                  <Button as={Link} to="/search" className="carousel-buttons">
                     Shop
                   </Button>
                 </Carousel.Caption>

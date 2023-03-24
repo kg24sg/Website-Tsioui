@@ -111,7 +111,6 @@ app.post('/signIn', function (req, res) {
       });
       console.log(err);
     } else {
-      console.log('rfrfrfrf');
       passport.authenticate('local')(req, res, function (err, user, info) {
         console.log(
           req.user.username +
@@ -132,7 +131,6 @@ app.post('/signIn', function (req, res) {
           },
         });
       });
-      console.log('454545');
     }
   });
 });

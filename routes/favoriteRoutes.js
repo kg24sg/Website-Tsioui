@@ -41,6 +41,7 @@ favoriteRouter.get(
   '/peruser/:userid',
   isAuth,
   expressAsyncHandler(async (req, res) => {
+    console.log(req.params.userid);
     const favorites = await Favorite.find({
       userFrom: req.params.userid,
     });

@@ -136,12 +136,12 @@ function App() {
           <title>Tsioui Webstore</title>
         </Helmet>
         <Headline />
-        <Header
+        {/* <Header
           setIsLogIn={isLogInhandle}
           setnameOfUser={setnameOfUser}
           setsessionTime={setsessionTime}
           isLogIn={isLogIn}
-        />
+        /> */}
 
         <div className={sidebarIsOpen ? 'active-cont' : ''}>
           {/* <div
@@ -449,6 +449,7 @@ function App() {
               }
             />
             <Route path="/shop/product/:slug" element={<ShowProduct />} />
+            <Route path="/search/product/:slug" element={<ShowProduct />} />
           </Routes>
         </div>
         <Footer></Footer>

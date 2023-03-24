@@ -98,10 +98,8 @@ export default function LogInForm(props) {
     };
     axios.post('/register', registerData).then((response) => {
       if (response.data.succes) {
-        console.log('hereeeee');
       } else {
         console.log(response.data.data.message);
-        console.log('hereeeee2');
       }
     });
     props.closeModal();
@@ -122,10 +120,8 @@ export default function LogInForm(props) {
     };
     axios.post('/register', registerData).then((response) => {
       if (response.data.succes) {
-        console.log('hereeeee');
       } else {
         console.log(response.data.data.message);
-        console.log('hereeeee2');
       }
     });
     props.closeModal();

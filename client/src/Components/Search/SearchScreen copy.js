@@ -11,7 +11,7 @@ import LoadingBox from '../globalFunctions/LoadingBox';
 import MessageBox from '../globalFunctions/MessageBox';
 import Product from '../Product/Product';
 import { LinkContainer } from 'react-router-bootstrap';
-
+import { Container, Dropdown, ListGroup } from 'react-bootstrap';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -109,43 +109,60 @@ export default function SearchScreen(props) {
       <Helmet>
         <title>Search Product</title>
       </Helmet>
-      <Row className="mt-3">
-        <Col
-          md={3}
-          className="border border-dark border-top-0 border-bottom-0 border-left-0 m-0"
-        >
-          <h3>Category</h3>
+      <Row>
+        <Col md={3}>
+          <h3>Department</h3>
           <div>
-            <select
-              value={category}
-              onChange={(e) => {
-                navigate(getFilterUrl({ category: e.target.value }));
-              }}
-            >
-              <option value="all">All</option>
-              {categories.map((c) => (
-                <option value={c}>{c}</option>
-              ))}
-            </select>
+            <ul>
+              <li>
+                <Link
+                  className={'all' === category ? 'text-bold' : ''}
+                  to={getFilterUrl({ category: 'all' })}
+                >
+                  Any
+                </Link>
+              </li>
+              <ListGroup>
+                {categories.map((c) => (
+                  <li key={c}>
+                    <ListGroup.Item
+                      className={c === category ? 'text-bold' : ''}
+                      to={getFilterUrl({ category: c })}
+                    >
+                      {c}
+                    </ListGroup.Item>
+                  </li>
+                ))}
+              </ListGroup>
+            </ul>
           </div>
           <div>
             <h3>Price</h3>
           </div>
           <div>
-            <select
-              value={price}
-              onChange={(e) => {
-                navigate(getFilterUrl({ price: e.target.value }));
-              }}
-            >
-              <option value="all">All</option>
+            <ul>
+              <li>
+                <Link
+                  className={'all' === price ? 'text-bold' : ''}
+                  to={getFilterUrl({ price: 'all' })}
+                >
+                  Any
+                </Link>
+              </li>
               {prices.map((p) => (
-                <option value={p.value}>{p.value}</option>
+                <li key={p.value}>
+                  <Link
+                    className={p.value === price ? 'text-bold' : ''}
+                    to={getFilterUrl({ price: p.value })}
+                  >
+                    {p.value}
+                  </Link>
+                </li>
               ))}
-            </select>
+            </ul>
           </div>
         </Col>
-        <Col md={9}>
+        <Col md={8}>
           {loading ? (
             <LoadingBox></LoadingBox>
           ) : error ? (
@@ -155,7 +172,7 @@ export default function SearchScreen(props) {
               <Row className="justify-content-between mb-3">
                 <Col md={6}>
                   <div>
-                    {countProducts === 0 ? 'No ' : countProducts + ' '}Results
+                    {countProducts === 0 ? 'No' : countProducts}Results
                     {query == !'all' && ':' + query}
                     {category == !'all' && ':' + category}
                     {price == !'all' && ':' + price}

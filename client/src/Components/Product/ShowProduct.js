@@ -10,9 +10,10 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../globalFunctions/LoadingBox';
-import MessageBox from '../globalFunctions/MessageBox';
 import { getError } from '../../utils';
 import { Store } from '../../Store';
+import Select from 'react-select';
+import FormErrors from '../globalFunctions/formErorrs';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -28,13 +29,15 @@ const reducer = (state, action) => {
 };
 export default function ShowProduct() {
   const [selectedImage, setSelectedImage] = useState('');
+  const [sizes, setSizes] = useState({ value: 'One Size', label: 'One Size' });
   const navigate = useNavigate();
   const params = useParams();
+
   const { slug } = params;
   const [{ loading, error, product }, dispatch] = useReducer(logger(reducer), {
     product: [],
     loading: true,
-    error: '',
+    error: { error: '' },
   });
 
   useEffect(() => {
@@ -52,31 +55,50 @@ export default function ShowProduct() {
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart } = state;
-  const addToCartHandler = async () => {
-    const existItem = cart.cartItems.find((x) => x._id === product._id);
-    const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
-    if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
-      return;
+
+  const erroOnHandleSize = () => {
+    if (product.sizes.length === 0) {
+      return false;
+    } else {
+      return sizes.value !== 'One Size' ? false : true;
     }
-    ctxDispatch({
-      type: 'CART_ADD_ITEM',
-      payload: { ...product, quantity },
-    });
-    navigate('/cart');
+  };
+  const addToCartHandler = async () => {
+    if (!erroOnHandleSize()) {
+      product.sizes = [];
+      const existItem = cart.cartItems.find((x) => x._id === product._id);
+      const quantity = existItem ? existItem.quantity + 1 : 1;
+
+      product.sizes = existItem
+        ? [...existItem.sizes, sizes]
+        : [...product.sizes, sizes];
+      const { data } = await axios.get(`/api/products/${product._id}`);
+      if (data.countInStock < quantity) {
+        window.alert('Sorry. Product is out of stock');
+        return;
+      }
+      ctxDispatch({
+        type: 'CART_ADD_ITEM',
+        payload: { ...product, quantity },
+      });
+      navigate('/cart');
+    } else {
+      dispatch({
+        type: 'FETCH_FAIL',
+        payload: { error: 'Please chose one of the available sizes' },
+      });
+    }
   };
 
   return (
     <>
       {loading ? (
         <LoadingBox />
-      ) : error ? (
-        <div>
-          <MessageBox variant="danger">{error}</MessageBox>
-        </div>
       ) : (
         <div className="mt-3">
+          <div className="panel panel-default">
+            <FormErrors formErrors={error} />
+          </div>
           <Row>
             <Col md={6}>
               <img
@@ -116,6 +138,22 @@ export default function ShowProduct() {
                     ))}
                   </Row>
                 </ListGroup.Item>
+                <ListGroup.Item>
+                  Select Size:
+                  {product.sizes.length == 0 ? (
+                    <Select
+                      defaultValue={{ value: 'One Size', label: 'One Size' }}
+                      options={{ value: 'One Size', label: 'One Size' }}
+                      isDisabled={true}
+                    />
+                  ) : (
+                    <Select
+                      onChange={(e) => setSizes(e)}
+                      options={product.sizes}
+                    />
+                  )}
+                </ListGroup.Item>
+
                 <ListGroup.Item>
                   Description:
                   <p>{product.description}</p>

@@ -10,11 +10,14 @@ export default function Footer() {
     paddingLeft: '10%',
   };
   return (
-    <footer>
-      <div style={{ flex: 1, height: '3px', backgroundColor: 'white' }} />{' '}
-      <div class="footer-basic">
-        <footer>
-          <div class="social">
+    <footer class="brown-color">
+      <div
+        class=" brown-color"
+        style={{ flex: 1, height: '3px', backgroundColor: 'white' }}
+      />{' '}
+      <div class="footer-basic brown-color">
+        <footer class="brown-color">
+          <div class="social brown-color">
             <a href="#">
               <i class="icon ion-social-instagram"></i>
             </a>

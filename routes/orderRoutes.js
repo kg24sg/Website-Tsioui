@@ -36,7 +36,7 @@ orderRouter.post(
       shippingPrice: req.body.shippingPrice,
       taxPrice: req.body.taxPrice,
       totalPrice: req.body.totalPrice,
-      user: req.user._id,
+      user: req.body.user._id,
     });
 
     const order = await newOrder.save();
@@ -89,10 +89,10 @@ orderRouter.get(
 );
 
 orderRouter.get(
-  '/mine',
+  '/mine/:id',
   isAuth,
   expressAsyncHandler(async (req, res) => {
-    const orders = await Order.find({ user: req.user._id });
+    const orders = await Order.find({ user: req.params.id });
     res.send(orders);
   })
 );

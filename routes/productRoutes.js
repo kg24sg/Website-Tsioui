@@ -38,6 +38,7 @@ productRouter.put(
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
+    console.log(req.body.sizes);
     if (product) {
       product.name = req.body.name;
       product.slug = req.body.slug;
@@ -47,6 +48,7 @@ productRouter.put(
       product.category = req.body.category;
       product.countInStock = req.body.countInStock;
       product.description = req.body.description;
+      product.sizes = req.body.sizes;
       await product.save();
       res.send({ message: 'Product Not Found' });
     } else {

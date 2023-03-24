@@ -11,6 +11,7 @@ import { getError } from '../../utils';
 import LoadingBox from '../globalFunctions/LoadingBox';
 import MessageBox from '../globalFunctions/MessageBox';
 import { toast } from 'react-toastify';
+import Select from 'react-select';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -37,6 +38,16 @@ const reducer = (state, action) => {
   }
 };
 export default function ProductEditScreen() {
+  var Multiselect = require('react-bootstrap-multiselect');
+  const myData = [
+    { value: 'XXS', label: 'XXS' },
+    { value: 'XS', label: 'XS' },
+    { value: 'S', label: 'S' },
+    { value: 'M', label: 'M' },
+    { value: 'L', label: 'L' },
+    { value: 'XL', label: 'XL' },
+    { value: 'XLL', label: 'XLL' },
+  ];
   const navigate = useNavigate();
   const params = useParams(); // /product/:id
   const { id: productId } = params;
@@ -57,6 +68,7 @@ export default function ProductEditScreen() {
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
+  const [sizes, setSizes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,6 +83,7 @@ export default function ProductEditScreen() {
         setCategory(data.category);
         setCountInStock(data.countInStock);
         setDescription(data.description);
+        setSizes(data.sizes);
         dispatch({ type: 'FETCH_SUCCESS' });
       } catch (err) {
         dispatch({
@@ -98,6 +111,7 @@ export default function ProductEditScreen() {
           category,
           countInStock,
           description,
+          sizes,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -142,7 +156,9 @@ export default function ProductEditScreen() {
     setImages(images.filter((x) => x !== fileName));
     toast.success('Inage removed siccesfully. click Update to apply it');
   };
-
+  const handleSizes = async (e) => {
+    console.log(e);
+  };
   return (
     <>
       <Container className='"small-container'>
@@ -245,6 +261,14 @@ export default function ProductEditScreen() {
                 required
               ></Form.Control>
             </Form.Group>
+            <div className="mb-3">
+              <Select
+                isMulti
+                defaultValue={sizes}
+                onChange={(e) => setSizes(e)}
+                options={myData}
+              />
+            </div>
             <div className="mb-3">
               <Button disabled={loadingUpdate} type="submit">
                 Update

@@ -90,7 +90,13 @@ export default function CartScreen() {
                         <BsPatchPlusFill></BsPatchPlusFill>
                       </Button>{' '}
                     </Col>
-                    <Col md={2} className="d-flex  justify-content-center">
+                    {
+                      <Col md={1} className="d-flex  justify-content-center">
+                        {'(' + item.sizes.map((item) => item.value + ' ') + ')'}
+                      </Col>
+                    }
+
+                    <Col md={1} className="d-flex  justify-content-center">
                       ${item.price}
                     </Col>
                     <Col md={1} className="d-flex  justify-content-center">

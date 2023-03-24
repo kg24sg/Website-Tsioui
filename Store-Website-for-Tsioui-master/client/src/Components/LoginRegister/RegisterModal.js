@@ -114,12 +114,10 @@ export default function RegisterForm(props) {
       .post('/register', registerData)
       .then((response) => {
         if (response.data.succes) {
-          console.log('hereeeee');
           props.handleLogIn();
         } else {
           setserrorMessage(response.data.data.message);
           setserrroRegister(true);
-          console.log('hereeeee2');
         }
       })
       .catch((error) => {

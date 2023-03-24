@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Nav from 'react-bootstrap/Nav';
 import { LinkContainer } from 'react-router-bootstrap';
+import { GiClothes } from 'react-icons/gi';
 export default function OffcanvasCategories(props) {
   const { categories } = props;
   const [show, setShow] = useState(false);
@@ -13,12 +14,14 @@ export default function OffcanvasCategories(props) {
   return (
     <>
       <Button variant="dark" onClick={handleShow}>
-        Shop
+        <GiClothes size={40} />
       </Button>
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Shop</Offcanvas.Title>
+          <Offcanvas.Title>
+            <GiClothes size={70} />
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Nav className="justify-content-end flex-grow-1 pe-3">
