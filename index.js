@@ -103,9 +103,9 @@ app.post('/register', (req, res) => {
     emailInd: 0,
     dateOfBirth: req.body.dateOfBirth,
   });
-  User.find({ email: req.body.email }, function (err, foundUser) {
+  User.find({ email: req.body.email }, function(err, foundUser) {
     if (foundUser.length === 0) {
-      User.register(newUser, req.body.password, function (err, user) {
+      User.register(newUser, req.body.password, function(err, user) {
         if (err) {
           res.send({
             succes: false,
@@ -128,12 +128,12 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.post('/signIn', function (req, res) {
+app.post('/signIn', function(req, res) {
   const user = new User({
     username: req.body.username,
     password: req.body.password,
   });
-  req.login(user, function (err) {
+  req.login(user, function(err) {
     if (err) {
       res.send({
         succes: false,
@@ -141,7 +141,7 @@ app.post('/signIn', function (req, res) {
       });
       console.log(err);
     } else {
-      passport.authenticate('local')(req, res, function (err, user, info) {
+      passport.authenticate('local')(req, res, function(err, user, info) {
         console.log(
           req.user.username +
             ' ' +
