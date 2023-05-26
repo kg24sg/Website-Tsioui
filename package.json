@@ -9,12 +9,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run build\" \"npm run start\" ",
-    "heroku-postbuild": "cd client && npm install && npm run build",
-    "build": "cd client && npm install && npm run build",
-    "homepage": "http:///kg24sg.github.io/Website-Tsioui"
+    "server": "nodemon"
   },
   "keywords": [],
   "author": "",
