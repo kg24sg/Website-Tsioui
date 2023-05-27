@@ -11,6 +11,7 @@ categoryRouter.get(
   '/',
   expressAsyncHandler(async (req, res) => {
     const categories = await Category.find({});
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.send(categories);
   })
 );
