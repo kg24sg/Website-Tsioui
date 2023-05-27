@@ -11,6 +11,7 @@
     "start": "nodemon index.js",
     "server": "nodemon"
   },
+  "proxy": "https://website-tsioui-api2.vercel.app",
   "keywords": [],
   "author": "",
   "license": "ISC",
