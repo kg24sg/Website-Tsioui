@@ -131,7 +131,7 @@ function App() {
   return (
     <div className="d-flex flex-column site-container">
       <ToastContainer position="bottom-center" limit={1} />
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Helmet>
           <title>Tsioui Webstore</title>
         </Helmet>
