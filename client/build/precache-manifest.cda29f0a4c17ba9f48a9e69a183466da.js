@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.69639397.js"
   },
   {
-    "revision": "17629a5dfe0d3c3946cf401e1895f091",
-    "url": "/static/media/revicons.17629a5d.ttf"
-  },
-  {
     "revision": "04eb8fc57f27498e5ae37523e3bfb2c7",
     "url": "/static/media/revicons.04eb8fc5.woff"
+  },
+  {
+    "revision": "17629a5dfe0d3c3946cf401e1895f091",
+    "url": "/static/media/revicons.17629a5d.ttf"
   },
   {
     "revision": "2feb69ccb596730c72920c6ba3e37ef8",
