@@ -8,9 +8,7 @@
     "npm": "8.5.5"
   },
   "scripts": {
-    "start": "nodemon index.js",
-    "server": "nodemon",
-    "build":"cd client && npm install && npm run build"
+    "start": "node index.js"
   },
   "proxy": "https://website-tsioui-api2.vercel.app",
   "keywords": [],
